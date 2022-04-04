@@ -2,6 +2,7 @@
 using BeautySalonContracts.StoragesContracts;
 using BeautySalonContracts.ViewModels;
 using BeautySalonDatabaseImplement.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,9 @@ namespace BeautySalonDatabaseImplement.Implements
             using (var context = new BeautySalonDatabase())
             {
                 return context.Visits
+                .Include(rec => rec.Client)
+                .Include(rec => rec.ProcedureVisit)
+                .ThenInclude(rec => rec.Procedure)
                 .Select(CreateModel)
                 .ToList();
             }
@@ -28,6 +32,9 @@ namespace BeautySalonDatabaseImplement.Implements
             using (var context = new BeautySalonDatabase())
             {
                 return context.Visits
+                .Include(rec => rec.Client)
+                .Include(rec => rec.ProcedureVisit)
+                .ThenInclude(rec => rec.Procedure)
                 .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.ClientId == model.ClientId || rec.Date == model.Date) ||
                 (model.DateFrom.HasValue && model.DateTo.HasValue && (rec.ClientId == model.ClientId
                 && rec.Date.Date >= model.DateFrom.Value.Date && rec.Date.Date <= model.DateTo.Value.Date)))
