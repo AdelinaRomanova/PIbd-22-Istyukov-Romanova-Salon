@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace BeautySalonDatabaseImplement.Implements
 {
-    internal class CosmeticStorage : ICosmeticStorage
+    public class CosmeticStorage : ICosmeticStorage
     {
 		public List<CosmeticViewModel> GetFullList()
 		{

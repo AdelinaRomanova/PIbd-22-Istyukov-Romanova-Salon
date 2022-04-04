@@ -23,7 +23,7 @@ namespace BeautySalonBusinessLogic.OfficePackage
             CreateTable(new List<string> { "3cm", "3cm", "4cm", "3cm", "4cm" });
             CreateRow(new PdfRowParameters
             {
-                Texts = new List<string> { "Дата оказания услуги", "Процедуры", "Цена", "Клиент" },
+                Texts = new List<string> { "Тип услуги", "Дата оказания услуги", "Процедуры", "Цена", "Клиент" },
                 Style = "NormalTitle",
                 ParagraphAlignment = PdfParagraphAlignmentType.Center
             });

@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BeautySalonView
+namespace BeautySalonViewClient
 {
     public partial class FormPurchases : Form
     {
         public FormPurchases()
         {
             InitializeComponent();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

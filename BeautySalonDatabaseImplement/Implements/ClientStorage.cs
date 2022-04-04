@@ -2,6 +2,7 @@
 using BeautySalonContracts.StoragesContracts;
 using BeautySalonContracts.ViewModels;
 using BeautySalonDatabaseImplement.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,12 @@ namespace BeautySalonDatabaseImplement.Implements
 				return null;
 			}
 			using var context = new BeautySalonDatabase();
-			return context.Clients.Where(rec => rec.Login.Contains(model.Login) && rec.Password == model.Password).Select(CreateModel).ToList();
+			return context.Clients
+				.Include(x => x.Procedure)
+				.Include(x => x.Purchase)
+				.Include(x => x.Visit)
+				.Where(rec => rec.Login.Contains(model.Login) && rec.Password == model.Password)
+				.Select(CreateModel).ToList();
 		}
 		public ClientViewModel GetElement(ClientBindingModel model)
 		{
@@ -31,7 +37,11 @@ namespace BeautySalonDatabaseImplement.Implements
 				return null;
 			}
 			using var context = new BeautySalonDatabase();
-			var client = context.Clients.FirstOrDefault(rec => rec.Email == model.Email || rec.Id == model.Id);
+			var client = context.Clients
+				.Include(x => x.Procedure)
+				.Include(x => x.Purchase)
+				.Include(x => x.Visit)
+				.FirstOrDefault(rec => rec.Email == model.Email || rec.Id == model.Id);
 			return client != null ? CreateModel(client) : null;
 		}
 		public void Insert(ClientBindingModel model)
