@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BeautySalonViewClient
 {
-	public partial class FormDeliveryList : Form
+	public partial class FormDistributionList : Form
 	{
-		public FormDeliveryList()
+		public FormDistributionList()
 		{
 			InitializeComponent();
 		}

@@ -1,7 +1,7 @@
 ﻿
 namespace BeautySalonViewClient
 {
-    partial class FormDeliveryList
+    partial class FormDistributionList
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace BeautySalonViewClient
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDeliveryList));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDistributionList));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();

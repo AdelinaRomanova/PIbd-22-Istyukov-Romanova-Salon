@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unity;
 
 namespace BeautySalonViewClient
 {
@@ -19,7 +13,38 @@ namespace BeautySalonViewClient
 
         private void процедурыToolStripMenuItem_Click(object sender, EventArgs e)
         {
+			var form = Program.Container.Resolve<FormProcedures>();
+			form.ShowDialog();
+		}
 
-        }
+        private void покупкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			var form = Program.Container.Resolve<FormPurchases>();
+			form.ShowDialog();
+		}
+
+        private void посещенияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			var form = Program.Container.Resolve<FormVisits>();
+			form.ShowDialog();
+		}
+
+        private void привязатьКчекуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			var form = Program.Container.Resolve<FormBindingReceipt>();
+			form.ShowDialog();
+		}
+
+        private void списоквыдачToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+			var form = Program.Container.Resolve<FormDistributionList>();
+			form.ShowDialog();
+		}
+
+        private void отчётПоПроцедурамToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			var form = Program.Container.Resolve<FormReportProcedures>();
+			form.ShowDialog();
+		}
     }
 }

@@ -32,10 +32,10 @@ namespace BeautySalonViewClient
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.процедурыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.посещениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.получениеСпискаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.рекомендацииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.рекомендацииToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.покупкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.посещенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.привязатьКчекуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списоквыдачToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.отчётПоПроцедурамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -46,10 +46,10 @@ namespace BeautySalonViewClient
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.процедурыToolStripMenuItem,
-            this.посещениеToolStripMenuItem,
-            this.получениеСпискаToolStripMenuItem,
-            this.рекомендацииToolStripMenuItem,
-            this.рекомендацииToolStripMenuItem1,
+            this.покупкиToolStripMenuItem,
+            this.посещенияToolStripMenuItem,
+            this.привязатьКчекуToolStripMenuItem,
+            this.списоквыдачToolStripMenuItem1,
             this.отчётПоПроцедурамToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -67,37 +67,41 @@ namespace BeautySalonViewClient
             this.процедурыToolStripMenuItem.Text = "Процедуры";
             this.процедурыToolStripMenuItem.Click += new System.EventHandler(this.процедурыToolStripMenuItem_Click);
             // 
-            // посещениеToolStripMenuItem
+            // покупкиToolStripMenuItem
             // 
-            this.посещениеToolStripMenuItem.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.посещениеToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.посещениеToolStripMenuItem.Name = "посещениеToolStripMenuItem";
-            this.посещениеToolStripMenuItem.Size = new System.Drawing.Size(90, 24);
-            this.посещениеToolStripMenuItem.Text = "Покупки";
+            this.покупкиToolStripMenuItem.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.покупкиToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.покупкиToolStripMenuItem.Name = "покупкиToolStripMenuItem";
+            this.покупкиToolStripMenuItem.Size = new System.Drawing.Size(90, 24);
+            this.покупкиToolStripMenuItem.Text = "Покупки";
+            this.покупкиToolStripMenuItem.Click += new System.EventHandler(this.покупкиToolStripMenuItem_Click);
             // 
-            // получениеСпискаToolStripMenuItem
+            // посещенияToolStripMenuItem
             // 
-            this.получениеСпискаToolStripMenuItem.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.получениеСпискаToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.получениеСпискаToolStripMenuItem.Name = "получениеСпискаToolStripMenuItem";
-            this.получениеСпискаToolStripMenuItem.Size = new System.Drawing.Size(123, 24);
-            this.получениеСпискаToolStripMenuItem.Text = "Посещение";
+            this.посещенияToolStripMenuItem.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.посещенияToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.посещенияToolStripMenuItem.Name = "посещенияToolStripMenuItem";
+            this.посещенияToolStripMenuItem.Size = new System.Drawing.Size(123, 24);
+            this.посещенияToolStripMenuItem.Text = "Посещение";
+            this.посещенияToolStripMenuItem.Click += new System.EventHandler(this.посещенияToolStripMenuItem_Click);
             // 
-            // рекомендацииToolStripMenuItem
+            // привязатьКчекуToolStripMenuItem
             // 
-            this.рекомендацииToolStripMenuItem.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.рекомендацииToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.рекомендацииToolStripMenuItem.Name = "рекомендацииToolStripMenuItem";
-            this.рекомендацииToolStripMenuItem.Size = new System.Drawing.Size(158, 24);
-            this.рекомендацииToolStripMenuItem.Text = "Привязать к чеку";
+            this.привязатьКчекуToolStripMenuItem.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.привязатьКчекуToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.привязатьКчекуToolStripMenuItem.Name = "привязатьКчекуToolStripMenuItem";
+            this.привязатьКчекуToolStripMenuItem.Size = new System.Drawing.Size(158, 24);
+            this.привязатьКчекуToolStripMenuItem.Text = "Привязать к чеку";
+            this.привязатьКчекуToolStripMenuItem.Click += new System.EventHandler(this.привязатьКчекуToolStripMenuItem_Click);
             // 
-            // рекомендацииToolStripMenuItem1
+            // списоквыдачToolStripMenuItem1
             // 
-            this.рекомендацииToolStripMenuItem1.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.рекомендацииToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.рекомендацииToolStripMenuItem1.Name = "рекомендацииToolStripMenuItem1";
-            this.рекомендацииToolStripMenuItem1.Size = new System.Drawing.Size(138, 24);
-            this.рекомендацииToolStripMenuItem1.Text = "Список выдач";
+            this.списоквыдачToolStripMenuItem1.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.списоквыдачToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.списоквыдачToolStripMenuItem1.Name = "списоквыдачToolStripMenuItem1";
+            this.списоквыдачToolStripMenuItem1.Size = new System.Drawing.Size(138, 24);
+            this.списоквыдачToolStripMenuItem1.Text = "Список выдач";
+            this.списоквыдачToolStripMenuItem1.Click += new System.EventHandler(this.списоквыдачToolStripMenuItem1_Click);
             // 
             // отчётПоПроцедурамToolStripMenuItem
             // 
@@ -106,8 +110,9 @@ namespace BeautySalonViewClient
             this.отчётПоПроцедурамToolStripMenuItem.Name = "отчётПоПроцедурамToolStripMenuItem";
             this.отчётПоПроцедурамToolStripMenuItem.Size = new System.Drawing.Size(208, 24);
             this.отчётПоПроцедурамToolStripMenuItem.Text = "Отчёт по процедурам";
+            this.отчётПоПроцедурамToolStripMenuItem.Click += new System.EventHandler(this.отчётПоПроцедурамToolStripMenuItem_Click);
             // 
-            // MainForm
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -119,7 +124,7 @@ namespace BeautySalonViewClient
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "MainForm";
+            this.Name = "FormMain";
             this.Text = "Главная форма";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -132,10 +137,10 @@ namespace BeautySalonViewClient
 
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem процедурыToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem посещениеToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem получениеСпискаToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem рекомендацииToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem рекомендацииToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem покупкиToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem посещенияToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem привязатьКчекуToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem списоквыдачToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem отчётПоПроцедурамToolStripMenuItem;
     }
 }

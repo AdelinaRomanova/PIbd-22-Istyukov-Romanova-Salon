@@ -29,49 +29,49 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProcedure));
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelProcedureName = new System.Windows.Forms.Label();
+            this.labelDuration = new System.Windows.Forms.Label();
+            this.labelPrice = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxProcedureName = new System.Windows.Forms.TextBox();
+            this.textBoxDuration = new System.Windows.Forms.TextBox();
+            this.textBoxPrice = new System.Windows.Forms.TextBox();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.textBoxFIOmaster = new System.Windows.Forms.TextBox();
+            this.labelFIOmaster = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // labelProcedureName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(40, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Название: ";
+            this.labelProcedureName.AutoSize = true;
+            this.labelProcedureName.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelProcedureName.Location = new System.Drawing.Point(40, 41);
+            this.labelProcedureName.Name = "labelProcedureName";
+            this.labelProcedureName.Size = new System.Drawing.Size(86, 16);
+            this.labelProcedureName.TabIndex = 0;
+            this.labelProcedureName.Text = "Название: ";
             // 
-            // label2
+            // labelDuration
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(40, 153);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(162, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Продолжительность:";
+            this.labelDuration.AutoSize = true;
+            this.labelDuration.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelDuration.Location = new System.Drawing.Point(40, 153);
+            this.labelDuration.Name = "labelDuration";
+            this.labelDuration.Size = new System.Drawing.Size(162, 16);
+            this.labelDuration.TabIndex = 1;
+            this.labelDuration.Text = "Продолжительность:";
             // 
-            // label3
+            // labelPrice
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(40, 208);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 16);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Цена:";
+            this.labelPrice.AutoSize = true;
+            this.labelPrice.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelPrice.Location = new System.Drawing.Point(40, 208);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(51, 16);
+            this.labelPrice.TabIndex = 2;
+            this.labelPrice.Text = "Цена:";
             // 
             // pictureBox1
             // 
@@ -82,70 +82,70 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // textBox1
+            // textBoxProcedureName
             // 
-            this.textBox1.Location = new System.Drawing.Point(40, 60);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(261, 27);
-            this.textBox1.TabIndex = 4;
+            this.textBoxProcedureName.Location = new System.Drawing.Point(40, 60);
+            this.textBoxProcedureName.Name = "textBoxProcedureName";
+            this.textBoxProcedureName.Size = new System.Drawing.Size(261, 27);
+            this.textBoxProcedureName.TabIndex = 4;
             // 
-            // textBox2
+            // textBoxDuration
             // 
-            this.textBox2.Location = new System.Drawing.Point(40, 172);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(261, 27);
-            this.textBox2.TabIndex = 5;
+            this.textBoxDuration.Location = new System.Drawing.Point(40, 172);
+            this.textBoxDuration.Name = "textBoxDuration";
+            this.textBoxDuration.Size = new System.Drawing.Size(261, 27);
+            this.textBoxDuration.TabIndex = 5;
             // 
-            // textBox3
+            // textBoxPrice
             // 
-            this.textBox3.Location = new System.Drawing.Point(40, 227);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(261, 27);
-            this.textBox3.TabIndex = 6;
+            this.textBoxPrice.Location = new System.Drawing.Point(40, 227);
+            this.textBoxPrice.Name = "textBoxPrice";
+            this.textBoxPrice.Size = new System.Drawing.Size(261, 27);
+            this.textBoxPrice.TabIndex = 6;
             // 
-            // button1
+            // buttonSave
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(243)))), ((int)(((byte)(178)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(40, 277);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 38);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Сохранить";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(243)))), ((int)(((byte)(178)))));
+            this.buttonSave.FlatAppearance.BorderSize = 0;
+            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSave.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonSave.Location = new System.Drawing.Point(40, 277);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(116, 38);
+            this.buttonSave.TabIndex = 7;
+            this.buttonSave.Text = "Сохранить";
+            this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // button2
+            // buttonClose
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(243)))), ((int)(((byte)(178)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(172, 277);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 38);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Отменить";
-            this.button2.UseVisualStyleBackColor = false;
+            this.buttonClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(243)))), ((int)(((byte)(178)))));
+            this.buttonClose.FlatAppearance.BorderSize = 0;
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClose.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonClose.Location = new System.Drawing.Point(172, 277);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(116, 38);
+            this.buttonClose.TabIndex = 8;
+            this.buttonClose.Text = "Отменить";
+            this.buttonClose.UseVisualStyleBackColor = false;
             // 
-            // textBox4
+            // textBoxFIOmaster
             // 
-            this.textBox4.Location = new System.Drawing.Point(40, 112);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(261, 27);
-            this.textBox4.TabIndex = 10;
+            this.textBoxFIOmaster.Location = new System.Drawing.Point(40, 112);
+            this.textBoxFIOmaster.Name = "textBoxFIOmaster";
+            this.textBoxFIOmaster.Size = new System.Drawing.Size(261, 27);
+            this.textBoxFIOmaster.TabIndex = 10;
             // 
-            // label4
+            // labelFIOmaster
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(40, 93);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 16);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "ФИО мастера: ";
+            this.labelFIOmaster.AutoSize = true;
+            this.labelFIOmaster.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelFIOmaster.Location = new System.Drawing.Point(40, 93);
+            this.labelFIOmaster.Name = "labelFIOmaster";
+            this.labelFIOmaster.Size = new System.Drawing.Size(125, 16);
+            this.labelFIOmaster.TabIndex = 9;
+            this.labelFIOmaster.Text = "ФИО мастера: ";
             // 
             // FormProcedure
             // 
@@ -153,19 +153,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(749, 448);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBoxFIOmaster);
+            this.Controls.Add(this.labelFIOmaster);
+            this.Controls.Add(this.buttonClose);
+            this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.textBoxPrice);
+            this.Controls.Add(this.textBoxDuration);
+            this.Controls.Add(this.textBoxProcedureName);
+            this.Controls.Add(this.labelPrice);
+            this.Controls.Add(this.labelDuration);
+            this.Controls.Add(this.labelProcedureName);
             this.Controls.Add(this.pictureBox1);
             this.Name = "FormProcedure";
             this.Text = "Процедура";
+            this.Load += new System.EventHandler(this.FormProcedure_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -174,16 +175,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelProcedureName;
+        private System.Windows.Forms.Label labelDuration;
+        private System.Windows.Forms.Label labelPrice;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxProcedureName;
+        private System.Windows.Forms.TextBox textBoxDuration;
+        private System.Windows.Forms.TextBox textBoxPrice;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonClose;
+        private System.Windows.Forms.TextBox textBoxFIOmaster;
+        private System.Windows.Forms.Label labelFIOmaster;
     }
 }
