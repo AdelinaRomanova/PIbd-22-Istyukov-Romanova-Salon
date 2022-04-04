@@ -15,7 +15,6 @@ namespace BeautySalonContracts.ViewModels
 
         [DisplayName("Цена: ")]
         public decimal Price { get; set; }
-
         public Dictionary<int, (string, decimal)> PurchaseProcedures { get; set; }
     }
 }

@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BeautySalonView
+namespace BeautySalonViewClient
 {
     public partial class FormBingingProcedur : Form
     {
         public FormBingingProcedur()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

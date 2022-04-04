@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace BeautySalonDatabaseImplement.Implements
 {
-    public class ReceiptStorage
+    public class ReceiptStorage : IReceiptStorage
     {
         public List<ReceiptViewModel> GetFullList()
         {

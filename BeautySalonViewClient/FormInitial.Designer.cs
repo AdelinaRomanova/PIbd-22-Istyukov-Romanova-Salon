@@ -1,4 +1,4 @@
-﻿namespace BeautySalonView
+﻿namespace BeautySalonViewClient
 {
     partial class FormInitial
     {

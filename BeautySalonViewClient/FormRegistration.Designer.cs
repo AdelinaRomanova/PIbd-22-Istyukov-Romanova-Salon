@@ -31,196 +31,198 @@ namespace BeautySalonViewClient
 		{
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistration));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxPatronymic = new System.Windows.Forms.TextBox();
+            this.textBoxPhone = new System.Windows.Forms.TextBox();
+            this.labelPhone = new System.Windows.Forms.Label();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.labelEmail = new System.Windows.Forms.Label();
+            this.labelPatronymic = new System.Windows.Forms.Label();
+            this.textBoxLogin = new System.Windows.Forms.TextBox();
+            this.labelLogin = new System.Windows.Forms.Label();
+            this.labelPassword = new System.Windows.Forms.Label();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.labelName = new System.Windows.Forms.Label();
+            this.textBoxSurname = new System.Windows.Forms.TextBox();
+            this.labelSurname = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox9);
-            this.groupBox1.Controls.Add(this.textBox8);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox7);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.buttonClose);
+            this.groupBox1.Controls.Add(this.textBoxPassword);
+            this.groupBox1.Controls.Add(this.textBoxName);
+            this.groupBox1.Controls.Add(this.textBoxPatronymic);
+            this.groupBox1.Controls.Add(this.textBoxPhone);
+            this.groupBox1.Controls.Add(this.labelPhone);
+            this.groupBox1.Controls.Add(this.textBoxEmail);
+            this.groupBox1.Controls.Add(this.labelEmail);
+            this.groupBox1.Controls.Add(this.labelPatronymic);
+            this.groupBox1.Controls.Add(this.textBoxLogin);
+            this.groupBox1.Controls.Add(this.labelLogin);
+            this.groupBox1.Controls.Add(this.labelPassword);
+            this.groupBox1.Controls.Add(this.buttonSave);
+            this.groupBox1.Controls.Add(this.labelName);
+            this.groupBox1.Controls.Add(this.textBoxSurname);
+            this.groupBox1.Controls.Add(this.labelSurname);
             this.groupBox1.Location = new System.Drawing.Point(25, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(789, 538);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
-            // textBox2
+            // buttonClose
             // 
-            this.textBox2.Location = new System.Drawing.Point(22, 255);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(223, 27);
-            this.textBox2.TabIndex = 23;
+            this.buttonClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(173)))), ((int)(((byte)(236)))));
+            this.buttonClose.FlatAppearance.BorderSize = 0;
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClose.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonClose.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonClose.Location = new System.Drawing.Point(344, 464);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(114, 45);
+            this.buttonClose.TabIndex = 24;
+            this.buttonClose.Text = "Отменить";
+            this.buttonClose.UseVisualStyleBackColor = false;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // textBox9
+            // textBoxPassword
             // 
-            this.textBox9.Location = new System.Drawing.Point(264, 60);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(221, 27);
-            this.textBox9.TabIndex = 22;
+            this.textBoxPassword.Location = new System.Drawing.Point(22, 255);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(223, 27);
+            this.textBoxPassword.TabIndex = 23;
             // 
-            // textBox8
+            // textBoxName
             // 
-            this.textBox8.Location = new System.Drawing.Point(22, 122);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(221, 27);
-            this.textBox8.TabIndex = 21;
+            this.textBoxName.Location = new System.Drawing.Point(264, 60);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(221, 27);
+            this.textBoxName.TabIndex = 22;
             // 
-            // textBox3
+            // textBoxPatronymic
             // 
-            this.textBox3.Location = new System.Drawing.Point(27, 383);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(221, 27);
-            this.textBox3.TabIndex = 20;
+            this.textBoxPatronymic.Location = new System.Drawing.Point(22, 122);
+            this.textBoxPatronymic.Name = "textBoxPatronymic";
+            this.textBoxPatronymic.Size = new System.Drawing.Size(221, 27);
+            this.textBoxPatronymic.TabIndex = 21;
             // 
-            // label3
+            // textBoxPhone
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(25, 364);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(148, 16);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "Сотовый телефон:";
+            this.textBoxPhone.Location = new System.Drawing.Point(27, 383);
+            this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.Size = new System.Drawing.Size(221, 27);
+            this.textBoxPhone.TabIndex = 20;
             // 
-            // textBox7
+            // labelPhone
             // 
-            this.textBox7.Location = new System.Drawing.Point(25, 323);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(223, 27);
-            this.textBox7.TabIndex = 18;
+            this.labelPhone.AutoSize = true;
+            this.labelPhone.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelPhone.Location = new System.Drawing.Point(25, 364);
+            this.labelPhone.Name = "labelPhone";
+            this.labelPhone.Size = new System.Drawing.Size(148, 16);
+            this.labelPhone.TabIndex = 19;
+            this.labelPhone.Text = "Сотовый телефон:";
             // 
-            // label8
+            // textBoxEmail
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(20, 300);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(49, 16);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Email:";
+            this.textBoxEmail.Location = new System.Drawing.Point(25, 323);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(223, 27);
+            this.textBoxEmail.TabIndex = 18;
             // 
-            // label6
+            // labelEmail
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(22, 103);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 16);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Отчество:";
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelEmail.Location = new System.Drawing.Point(20, 300);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(49, 16);
+            this.labelEmail.TabIndex = 17;
+            this.labelEmail.Text = "Email:";
             // 
-            // textBox5
+            // labelPatronymic
             // 
-            this.textBox5.Location = new System.Drawing.Point(25, 185);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(223, 27);
-            this.textBox5.TabIndex = 11;
+            this.labelPatronymic.AutoSize = true;
+            this.labelPatronymic.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelPatronymic.Location = new System.Drawing.Point(22, 103);
+            this.labelPatronymic.Name = "labelPatronymic";
+            this.labelPatronymic.Size = new System.Drawing.Size(80, 16);
+            this.labelPatronymic.TabIndex = 12;
+            this.labelPatronymic.Text = "Отчество:";
             // 
-            // label5
+            // textBoxLogin
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(22, 166);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(116, 16);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Введите логин:";
+            this.textBoxLogin.Location = new System.Drawing.Point(25, 185);
+            this.textBoxLogin.Name = "textBoxLogin";
+            this.textBoxLogin.Size = new System.Drawing.Size(223, 27);
+            this.textBoxLogin.TabIndex = 11;
             // 
-            // label4
+            // labelLogin
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(22, 232);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 16);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Введите пароль:";
+            this.labelLogin.AutoSize = true;
+            this.labelLogin.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelLogin.Location = new System.Drawing.Point(22, 166);
+            this.labelLogin.Name = "labelLogin";
+            this.labelLogin.Size = new System.Drawing.Size(116, 16);
+            this.labelLogin.TabIndex = 10;
+            this.labelLogin.Text = "Введите логин:";
             // 
-            // button1
+            // labelPassword
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(173)))), ((int)(((byte)(236)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(214, 464);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 45);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Создать";
-            this.button1.UseVisualStyleBackColor = false;
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelPassword.Location = new System.Drawing.Point(22, 232);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(129, 16);
+            this.labelPassword.TabIndex = 8;
+            this.labelPassword.Text = "Введите пароль:";
             // 
-            // label2
+            // buttonSave
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(264, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 16);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Имя:";
+            this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(173)))), ((int)(((byte)(236)))));
+            this.buttonSave.FlatAppearance.BorderSize = 0;
+            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSave.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonSave.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonSave.Location = new System.Drawing.Point(216, 464);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(111, 45);
+            this.buttonSave.TabIndex = 4;
+            this.buttonSave.Text = "Сохранить";
+            this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // textBox1
+            // labelName
             // 
-            this.textBox1.Location = new System.Drawing.Point(24, 60);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(223, 27);
-            this.textBox1.TabIndex = 1;
+            this.labelName.AutoSize = true;
+            this.labelName.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelName.Location = new System.Drawing.Point(264, 41);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(42, 16);
+            this.labelName.TabIndex = 2;
+            this.labelName.Text = "Имя:";
             // 
-            // label1
+            // textBoxSurname
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(22, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Фамилия:";
+            this.textBoxSurname.Location = new System.Drawing.Point(24, 60);
+            this.textBoxSurname.Name = "textBoxSurname";
+            this.textBoxSurname.Size = new System.Drawing.Size(223, 27);
+            this.textBoxSurname.TabIndex = 1;
             // 
-            // button2
+            // labelSurname
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(173)))), ((int)(((byte)(236)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(344, 464);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(114, 45);
-            this.button2.TabIndex = 24;
-            this.button2.Text = "Отменить";
-            this.button2.UseVisualStyleBackColor = false;
+            this.labelSurname.AutoSize = true;
+            this.labelSurname.Font = new System.Drawing.Font("STXihei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelSurname.Location = new System.Drawing.Point(22, 41);
+            this.labelSurname.Name = "labelSurname";
+            this.labelSurname.Size = new System.Drawing.Size(80, 16);
+            this.labelSurname.TabIndex = 0;
+            this.labelSurname.Text = "Фамилия:";
             // 
             // FormRegistration
             // 
@@ -234,6 +236,7 @@ namespace BeautySalonViewClient
             this.DoubleBuffered = true;
             this.Name = "FormRegistration";
             this.Text = "Регистрация";
+            this.Load += new System.EventHandler(this.FormRegistration_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -243,21 +246,21 @@ namespace BeautySalonViewClient
 		#endregion
 
 		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.TextBox textBox5;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox textBox7;
-		private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.TextBox textBoxLogin;
+		private System.Windows.Forms.Label labelLogin;
+		private System.Windows.Forms.Label labelPassword;
+		private System.Windows.Forms.Button buttonSave;
+		private System.Windows.Forms.TextBox textBoxSurname;
+		private System.Windows.Forms.Label labelSurname;
+		private System.Windows.Forms.TextBox textBoxEmail;
+		private System.Windows.Forms.Label labelEmail;
+        private System.Windows.Forms.Label labelPatronymic;
+        private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBoxPatronymic;
+        private System.Windows.Forms.TextBox textBoxPhone;
+        private System.Windows.Forms.Label labelPhone;
+        private System.Windows.Forms.Button buttonClose;
     }
 }

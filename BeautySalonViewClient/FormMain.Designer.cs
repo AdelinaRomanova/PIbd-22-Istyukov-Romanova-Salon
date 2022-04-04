@@ -1,7 +1,7 @@
 ﻿
 namespace BeautySalonViewClient
 {
-	partial class MainForm
+	partial class FormMain
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -29,7 +29,7 @@ namespace BeautySalonViewClient
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.процедурыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.посещениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +65,7 @@ namespace BeautySalonViewClient
             this.процедурыToolStripMenuItem.Name = "процедурыToolStripMenuItem";
             this.процедурыToolStripMenuItem.Size = new System.Drawing.Size(117, 24);
             this.процедурыToolStripMenuItem.Text = "Процедуры";
+            this.процедурыToolStripMenuItem.Click += new System.EventHandler(this.процедурыToolStripMenuItem_Click);
             // 
             // посещениеToolStripMenuItem
             // 

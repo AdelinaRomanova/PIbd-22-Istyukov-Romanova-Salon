@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace BeautySalonViewClient
 {
-	public partial class MainForm : Form
+	public partial class FormMain : Form
 	{
-		public MainForm()
+		public FormMain()
 		{
 			InitializeComponent();
 		}
+
+        private void процедурыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

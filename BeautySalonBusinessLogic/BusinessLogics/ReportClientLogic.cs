@@ -13,46 +13,41 @@ namespace BeautySalonBusinessLogic.BusinessLogics
 {
     public class ReportClientLogic : IReportClientLogic
     {
-        private readonly IClientStorage _clientStorage;
         private readonly IVisitStorage _visitStorage;
         private readonly IPurchaseStorage _purchaseStorage;
-        private readonly IProcedureStorage _procedureStorage;
         private readonly IDistributionStorage _distributionStorage;
         private readonly AbstractSaveToExcelClient _saveToExcel;
         private readonly AbstractSaveToWordClient _saveToWord;
         private readonly AbstractSaveToPdfClient _saveToPdf;
 
-        public ReportClientLogic(IClientStorage clientStorage, IVisitStorage visitStorage,
-            IPurchaseStorage purchaseStorage, IProcedureStorage procedureStorage, IDistributionStorage distributionStorage,
+        public ReportClientLogic(
+            IVisitStorage visitStorage, IPurchaseStorage purchaseStorage, IDistributionStorage distributionStorage,
             AbstractSaveToExcelClient saveToExcel, AbstractSaveToWordClient saveToWord, AbstractSaveToPdfClient saveToPdf)
         {
-            _clientStorage = clientStorage;
             _visitStorage = visitStorage;
             _purchaseStorage = purchaseStorage;
-            _procedureStorage = procedureStorage;
             _distributionStorage = distributionStorage;
             _saveToExcel = saveToExcel;
             _saveToWord = saveToWord;
             _saveToPdf = saveToPdf;
         }
 
-        // Получение списка процедур за определенный период
+        // Получение списка процедур, связанных с покупками и посещениями
         public List<ReportProceduresViewModel> GetProcedures(ReportClientBindingModel model)
         {
             var listAll = new List<ReportProceduresViewModel>();
 
-
             var listPurchases = _purchaseStorage.GetFilteredList(new PurchaseBindingModel { ClientId = model.ClientId, DateFrom = model.DateFrom, DateTo = model.DateTo });
             foreach (var purchase in listPurchases)
             {
-                foreach (var pp in purchase.PurchaseProcedures)
+                foreach (var purch in purchase.PurchaseProcedures)
                 {
                     listAll.Add(new ReportProceduresViewModel
                     {
                         TypeOfService = "Покупка",
                         DateOfService = purchase.Date,
-                        ProcedureName = pp.Value.Item1,
-                        Price = pp.Value.Item2,
+                        ProcedureName = purch.Value.Item1,
+                        Price = purch.Value.Item2,
                     });
                 }
             }

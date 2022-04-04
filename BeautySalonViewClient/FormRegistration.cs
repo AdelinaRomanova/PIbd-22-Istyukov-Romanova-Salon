@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BeautySalonBusinessLogic.BusinessLogics;
+using BeautySalonContracts.BindingModels;
+using System;
+using System.Windows;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +15,86 @@ namespace BeautySalonViewClient
 {
 	public partial class FormRegistration : Form
 	{
-		public FormRegistration()
+		public int Id { set { id = value; } }
+		private readonly ClientLogic _clientLogic;
+		private int? id;
+
+		public FormRegistration(ClientLogic clientLogic)
 		{
 			InitializeComponent();
+			this._clientLogic = clientLogic;
 		}
+        private void FormRegistration_Load(object sender, EventArgs e)
+        {
+            if (id.HasValue)
+            {
+                try
+                {
+                    var view = _clientLogic.Read(new ClientBindingModel { Id = id })?[0];
+                    if (view != null)
+                    {
+                        textBoxName.Text = view.ClientName;
+                        textBoxSurname.Text = view.ClientSurname;
+                        textBoxPatronymic.Text = view.Patronymic;
+                        textBoxLogin.Text = view.Login;
+                        textBoxPassword.Text = view.Password;
+                        textBoxEmail.Text = view.Email;
+                        textBoxPhone.Text = view.Phone;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxName.Text))
+            {
+                MessageBox.Show("Заполните имя", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(textBoxSurname.Text))
+            {
+                MessageBox.Show("Заполните фамилию", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(textBoxLogin.Text))
+            {
+                MessageBox.Show("Заполните логин", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrEmpty(textBoxPassword.Text))
+            {
+                MessageBox.Show("Заполните пароль", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                _clientLogic.CreateOrUpdate(new ClientBindingModel
+                {
+                    ClientName = textBoxName.Text,
+                    ClientSurname = textBoxSurname.Text,
+                    Patronymic = textBoxPatronymic.Text,
+                    Login = textBoxLogin.Text,
+                    Password = textBoxPassword.Text,
+                    Email = textBoxEmail.Text,
+                    Phone = textBoxPhone.Text
+                });
+                MessageBox.Show("Регистрация прошла успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
     }
 }

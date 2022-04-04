@@ -28,7 +28,7 @@ namespace BeautySalonDatabaseImplement.Models
 
         
         [ForeignKey("ClientId")]
-        public List<Visit> Visits { get; set; }
+        public List<Visit> Visit { get; set; }
         
         [ForeignKey("ClientId")]
         public List<Procedure> Procedure { get; set; }
