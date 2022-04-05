@@ -20,7 +20,6 @@ namespace BeautySalonDatabaseImplement.Implements
                 .Include(rec => rec.Visit)
                 .Include(rec => rec.DistributionCosmetics)
                 .ThenInclude(rec => rec.Cosmetic)
-                .ToList()
                 .Select(CreateModel)
                 .ToList();
             }
