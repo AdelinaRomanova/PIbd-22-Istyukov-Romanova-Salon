@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32319.34
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalonViewClient", "BeautySalonViewClient\BeautySalonViewClient.csproj", "{34806984-D419-49F0-A7DE-4A3F1FB30893}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeautySalonViewClient", "BeautySalonViewClient\BeautySalonViewClient.csproj", "{34806984-D419-49F0-A7DE-4A3F1FB30893}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalonBusinessLogic", "BeautySalonBusinessLogic\BeautySalonBusinessLogic.csproj", "{DF288075-9E10-490A-8350-CDACC7E16C05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeautySalonBusinessLogic", "BeautySalonBusinessLogic\BeautySalonBusinessLogic.csproj", "{DF288075-9E10-490A-8350-CDACC7E16C05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalonContracts", "BeautySalonContracts\BeautySalonContracts.csproj", "{A336AACF-F956-4E0E-AC3A-4BB4FBB3D91C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeautySalonContracts", "BeautySalonContracts\BeautySalonContracts.csproj", "{A336AACF-F956-4E0E-AC3A-4BB4FBB3D91C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalonDatabaseImplement", "BeautySalonDatabaseImplement\BeautySalonDatabaseImplement.csproj", "{35F051AF-6597-49BA-B076-B6A6FDA9CBDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeautySalonDatabaseImplement", "BeautySalonDatabaseImplement\BeautySalonDatabaseImplement.csproj", "{35F051AF-6597-49BA-B076-B6A6FDA9CBDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalonViewEmployee", "BeautySalonViewEmployee\BeautySalonViewEmployee.csproj", "{10CB37F7-DF34-4899-9282-B47BC1B40E87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{35F051AF-6597-49BA-B076-B6A6FDA9CBDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35F051AF-6597-49BA-B076-B6A6FDA9CBDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35F051AF-6597-49BA-B076-B6A6FDA9CBDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10CB37F7-DF34-4899-9282-B47BC1B40E87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10CB37F7-DF34-4899-9282-B47BC1B40E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10CB37F7-DF34-4899-9282-B47BC1B40E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10CB37F7-DF34-4899-9282-B47BC1B40E87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
