@@ -2,6 +2,7 @@
 using BeautySalonContracts.StoragesContracts;
 using BeautySalonContracts.ViewModels;
 using BeautySalonDatabaseImplement.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,9 @@ namespace BeautySalonDatabaseImplement.Implements
 		public List<CosmeticViewModel> GetFullList()
 		{
 			using var context = new BeautySalonDatabase();
-			return context.Cosmetics.Select(CreateModel).ToList();
+			return context.Cosmetics
+				.Include(rec => rec.Employee)
+				.Select(CreateModel).ToList();
 		}
 		public List<CosmeticViewModel> GetFilteredList(CosmeticBindingModel model)
 		{
@@ -22,7 +25,9 @@ namespace BeautySalonDatabaseImplement.Implements
 				return null;
 			}
 			using var context = new BeautySalonDatabase();
-			return context.Cosmetics.Where(rec => rec.CosmeticName.Contains(model.CosmeticName)).Select(CreateModel).ToList();
+			return context.Cosmetics
+				.Include(rec => rec.Employee)
+				.Where(rec => rec.CosmeticName.Contains(model.CosmeticName)).Select(CreateModel).ToList();
 		}
 		public CosmeticViewModel GetElement(CosmeticBindingModel model)
 		{
@@ -31,7 +36,9 @@ namespace BeautySalonDatabaseImplement.Implements
 				return null;
 			}
 			using var context = new BeautySalonDatabase();
-			var cosmetic = context.Cosmetics.FirstOrDefault(rec => rec.CosmeticName == model.CosmeticName || rec.Id == model.Id);
+			var cosmetic = context.Cosmetics
+				.Include(rec => rec.Employee)
+				.FirstOrDefault(rec => rec.CosmeticName == model.CosmeticName || rec.Id == model.Id);
 			return cosmetic != null ? CreateModel(cosmetic) : null;
 		}
 		public void Insert(CosmeticBindingModel model)
