@@ -28,10 +28,10 @@ namespace BeautySalonBusinessLogic.BusinessLogics
         }
         public void CreateOrUpdate(ClientBindingModel model)
         {
-            var element = _clientStorage.GetElement(new ClientBindingModel { Login = model.Login });
+            var element = _clientStorage.GetElement(new ClientBindingModel { Email = model.Email });
             if (element != null && element.Id != model.Id)
             {
-                throw new Exception("Уже есть клиент с таким логином");
+                throw new Exception("Уже есть клиент с такой почтой");
             }
             if (model.Id.HasValue)
             {

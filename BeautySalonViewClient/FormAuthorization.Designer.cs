@@ -36,7 +36,7 @@ namespace BeautySalonViewClient
             this.buttonOk = new System.Windows.Forms.Button();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.labelPassword = new System.Windows.Forms.Label();
-            this.textBoxLogin = new System.Windows.Forms.TextBox();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,7 +59,7 @@ namespace BeautySalonViewClient
             this.groupBox1.Controls.Add(this.buttonOk);
             this.groupBox1.Controls.Add(this.textBoxPassword);
             this.groupBox1.Controls.Add(this.labelPassword);
-            this.groupBox1.Controls.Add(this.textBoxLogin);
+            this.groupBox1.Controls.Add(this.textBoxEmail);
             this.groupBox1.Controls.Add(this.labelLogin);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -119,10 +119,10 @@ namespace BeautySalonViewClient
             // 
             // textBoxLogin
             // 
-            this.textBoxLogin.Location = new System.Drawing.Point(417, 89);
-            this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(273, 27);
-            this.textBoxLogin.TabIndex = 1;
+            this.textBoxEmail.Location = new System.Drawing.Point(417, 89);
+            this.textBoxEmail.Name = "textBoxLogin";
+            this.textBoxEmail.Size = new System.Drawing.Size(273, 27);
+            this.textBoxEmail.TabIndex = 1;
             // 
             // pictureBox1
             // 
@@ -161,7 +161,7 @@ namespace BeautySalonViewClient
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label labelPassword;
-        private System.Windows.Forms.TextBox textBoxLogin;
+        private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

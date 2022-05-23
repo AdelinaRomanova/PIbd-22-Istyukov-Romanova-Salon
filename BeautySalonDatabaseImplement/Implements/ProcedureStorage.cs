@@ -28,7 +28,7 @@ namespace BeautySalonDatabaseImplement.Implements
             using (var context = new BeautySalonDatabase())
             {
                 return context.Procedures
-                .Where(rec => rec.ProcedureName.Contains(model.ProcedureName))
+                .Where(rec => rec.ClientId == model.ClientId || rec.ProcedureName.Contains(model.ProcedureName))
                 .Select(CreateModel)
                 .ToList();
             }

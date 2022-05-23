@@ -9,6 +9,9 @@ namespace BeautySalonViewClient
 	public partial class FormProcedures : Form
 	{
 		private readonly IProcedureLogic _logic;
+		public int Id { set { id = value; } }
+		private int? id;
+
 		public FormProcedures(IProcedureLogic logic)
 		{
 			InitializeComponent();
@@ -39,6 +42,7 @@ namespace BeautySalonViewClient
 		private void buttonAdd_Click(object sender, EventArgs e)
         {
 			var form = Program.Container.Resolve<FormProcedure>();
+			form.ClientId = (int)id;
 			if (form.ShowDialog() == DialogResult.OK)
 			{
 				LoadData();
@@ -50,6 +54,7 @@ namespace BeautySalonViewClient
 			{
 				var form = Program.Container.Resolve<FormProcedure>();
 				form.Id = Convert.ToInt32(dataGridViewProcedures.SelectedRows[0].Cells[0].Value);
+				form.ClientId = (int)id;
 				if (form.ShowDialog() == DialogResult.OK)
 				{
 					LoadData();

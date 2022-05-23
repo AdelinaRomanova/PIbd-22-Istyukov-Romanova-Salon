@@ -1,0 +1,31 @@
+﻿@using BeautySalonContracts.ViewModels;
+@model ProcedureViewModel;
+@{ ViewData["Title"] = "Создание процедуры"; }
+
+<div class="text-center">
+    <h2 class="display-4">Создание процедуры</h2>
+</div>
+<form method="post">
+    <div class="row">
+        <div class="col-4">Название:</div>
+        <div class="col-8"><input type="text" name="procedureName" id="procedureName" /></div>
+    </div>
+     <div class="row">
+        <div class="col-4">ФИО мастера:</div>
+        <div class="col-8"><input type="text" name="fioMaster" id="fioMaster" /></div>
+    </div>
+    <div class="row">
+        <div class="col-4">Длительность:</div>
+        <div class="col-8"><input type="text" name="duration" id="duration" /></div>
+    </div>
+    <div class="row">
+        <div class="col-4">Цена:</div>
+        <div class="col-8"><input type="text" name="price" id="price" /></div>
+    </div>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-8">
+            <input type="submit" value="Создать" class="btn btn-primary" />
+        </div>
+    </div>
+</form>

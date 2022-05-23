@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BeautySalonDatabaseImplement.Migrations
 {
     [DbContext(typeof(BeautySalonDatabase))]
-    [Migration("20220404143033_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220523104411_InitialCreate17")]
+    partial class InitialCreate17
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,10 +37,6 @@ namespace BeautySalonDatabaseImplement.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Login")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")

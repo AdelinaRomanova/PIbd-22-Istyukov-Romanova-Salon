@@ -23,7 +23,7 @@ namespace BeautySalonViewClient
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBoxLogin.Text))
+            if (string.IsNullOrEmpty(textBoxEmail.Text))
             {
                 MessageBox.Show("Заполните логин", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -37,12 +37,15 @@ namespace BeautySalonViewClient
             {
                 var view = logic.Read(new ClientBindingModel
                 {
-                    Login = textBoxLogin.Text,
+                    Email = textBoxEmail.Text,
                     Password = textBoxPassword.Text
                 });
-                Program.Client = (view != null && view.Count > 0) ? view[0] : null;
-                var form = Program.Container.Resolve<FormMain>();
-                form.ShowDialog();
+                if (view != null && view.Count > 0)
+                {
+                    var form = Program.Container.Resolve<FormMain>();
+                    form.Id = view[0].Id;
+                    form.ShowDialog();
+                }
             }
             catch (Exception ex)
             {

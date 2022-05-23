@@ -27,7 +27,7 @@ namespace BeautySalonDatabaseImplement.Implements
 				.Include(x => x.Procedure)
 				.Include(x => x.Purchase)
 				.Include(x => x.Visit)
-				.Where(rec => rec.Login.Contains(model.Login) && rec.Password == model.Password)
+				.Where(rec => rec.Email.Contains(model.Email) && rec.Password == model.Password)
 				.Select(CreateModel).ToList();
 		}
 		public ClientViewModel GetElement(ClientBindingModel model)
@@ -80,9 +80,8 @@ namespace BeautySalonDatabaseImplement.Implements
 			client.ClientName = model.ClientName;
 			client.ClientSurname = model.ClientSurname;
 			client.Patronymic = model.Patronymic;
-			client.Login = model.Login;
-			client.Password = model.Password;
 			client.Email = model.Email;
+			client.Password = model.Password;
 			client.Phone = model.Phone;
 			return client;
 		}
@@ -94,9 +93,8 @@ namespace BeautySalonDatabaseImplement.Implements
 				ClientName = client.ClientName,
 				ClientSurname = client.ClientSurname,
 				Patronymic = client.Patronymic,
-				Login = client.Login,
-				Password = client.Password,
 				Email = client.Email,
+				Password = client.Password,
 				Phone = client.Phone
 			};
 		}

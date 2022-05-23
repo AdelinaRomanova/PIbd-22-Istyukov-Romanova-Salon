@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BeautySalonBusinessLogic.BusinessLogics;
+using BeautySalonContracts.BindingModels;
+using System;
 using System.Windows.Forms;
 using Unity;
 
@@ -6,14 +8,19 @@ namespace BeautySalonViewClient
 {
 	public partial class FormMain : Form
 	{
-		public FormMain()
+		public int Id { set { id = value; } }
+		private int? id;
+		private ClientLogic logic;
+		public FormMain(ClientLogic logic)
 		{
 			InitializeComponent();
+			this.logic = logic;
 		}
 
         private void процедурыToolStripMenuItem_Click(object sender, EventArgs e)
         {
 			var form = Program.Container.Resolve<FormProcedures>();
+			form.Id = (int)id;
 			form.ShowDialog();
 		}
 
@@ -45,6 +52,12 @@ namespace BeautySalonViewClient
         {
 			var form = Program.Container.Resolve<FormReportProcedures>();
 			form.ShowDialog();
+		}
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+			var client = logic.Read(new ClientBindingModel { Id = id })?[0];
+			labelClient.Text = "Клиент: " + client.ClientName + " " + client.ClientSurname;
 		}
     }
 }

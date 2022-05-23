@@ -15,6 +15,10 @@ namespace BeautySalonContracts.ViewModels
 
         [DisplayName("Цена: ")]
         public decimal Price { get; set; }
+
+        [DisplayName("Процедуры")]
         public Dictionary<int, (string, decimal)> PurchaseProcedures { get; set; }
+        public List<int> ProcedureIds { get; set; }
+
     }
 }

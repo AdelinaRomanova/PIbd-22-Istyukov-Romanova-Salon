@@ -37,9 +37,9 @@ namespace BeautySalonDatabaseImplement.Implements
                 .Include(rec => rec.Receipt)
                 .Include(rec => rec.ProcedurePurchase)
                 .ThenInclude(rec => rec.Procedure)
-                .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.ClientId == model.ClientId || rec.Date == model.Date || rec.ReceiptId == model.ReceiptId) ||
-                (model.DateFrom.HasValue && model.DateTo.HasValue && (rec.ClientId == model.ClientId
-                && rec.Date.Date >= model.DateFrom.Value.Date && rec.Date.Date <= model.DateTo.Value.Date)))
+                .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.Date.Date == model.Date.Date) ||
+                 (model.DateFrom.HasValue && model.DateTo.HasValue && rec.Date.Date >= model.DateFrom.Value.Date && rec.Date.Date <= model.DateTo.Value.Date) ||
+                 (model.ClientId.HasValue && rec.ClientId == model.ClientId))
                 .Select(CreateModel)
                 .ToList();
             }

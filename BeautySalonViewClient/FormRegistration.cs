@@ -36,9 +36,8 @@ namespace BeautySalonViewClient
                         textBoxName.Text = view.ClientName;
                         textBoxSurname.Text = view.ClientSurname;
                         textBoxPatronymic.Text = view.Patronymic;
-                        textBoxLogin.Text = view.Login;
-                        textBoxPassword.Text = view.Password;
                         textBoxEmail.Text = view.Email;
+                        textBoxPassword.Text = view.Password;
                         textBoxPhone.Text = view.Phone;
                     }
                 }
@@ -77,9 +76,8 @@ namespace BeautySalonViewClient
                     ClientName = textBoxName.Text,
                     ClientSurname = textBoxSurname.Text,
                     Patronymic = textBoxPatronymic.Text,
-                    Login = textBoxLogin.Text,
-                    Password = textBoxPassword.Text,
                     Email = textBoxEmail.Text,
+                    Password = textBoxPassword.Text,
                     Phone = textBoxPhone.Text
                 });
                 MessageBox.Show("Регистрация прошла успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
