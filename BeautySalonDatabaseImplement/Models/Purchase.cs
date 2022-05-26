@@ -22,6 +22,8 @@ namespace BeautySalonDatabaseImplement.Models
 
 		[ForeignKey("PurchaseId")]
 		public virtual List<ProcedurePurchase> ProcedurePurchase { get; set; }
-		
+		[ForeignKey("PurchaseId")]
+		public virtual List<PurchaseReceipt> PurchaseReceipts { get; set; }
+
 	}
 }

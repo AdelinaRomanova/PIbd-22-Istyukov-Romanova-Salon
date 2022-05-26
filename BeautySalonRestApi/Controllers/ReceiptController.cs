@@ -21,16 +21,13 @@ namespace BeautySalonRestApi.Controllers
         [HttpGet]
         public List<ReceiptViewModel> GetReceiptList() => _receiptLogic.Read(null)?.ToList();
 
-        [HttpGet]
-        public ReceiptViewModel GetDeposit(int receiptId) => _receiptLogic.Read(new ReceiptBindingModel { Id = receiptId })?[0];
-
         [HttpPost]
         public void CreateOrUpdateReceipt(ReceiptBindingModel model) => _receiptLogic.CreateOrUpdate(model);
 
         [HttpPost]
         public void DeleteReceipt(ReceiptBindingModel model) => _receiptLogic.Delete(model);
 
-        //[HttpPost]
-        //public void AddReceiptPurchase(AddPurchasesBindingModel model) => _receiptLogic.AddClients(model);
+        [HttpPost]
+        public void AddReceiptPurchases(AddPurchasesBindingModel model) => _receiptLogic.AddPurchases(model);
     }
 }

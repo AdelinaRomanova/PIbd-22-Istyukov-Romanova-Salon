@@ -4,14 +4,16 @@ using BeautySalonDatabaseImplement;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BeautySalonDatabaseImplement.Migrations
 {
     [DbContext(typeof(BeautySalonDatabase))]
-    partial class BeautySalonDatabaseModelSnapshot : ModelSnapshot
+    [Migration("20220526173514_InitialCreate4")]
+    partial class InitialCreate4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -285,7 +287,7 @@ namespace BeautySalonDatabaseImplement.Migrations
 
                     b.HasIndex("ReceiptId");
 
-                    b.ToTable("PurchaseReceipts");
+                    b.ToTable("PurchaseReceipt");
                 });
 
             modelBuilder.Entity("BeautySalonDatabaseImplement.Models.Receipt", b =>

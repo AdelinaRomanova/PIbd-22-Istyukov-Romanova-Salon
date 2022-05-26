@@ -231,6 +231,16 @@ namespace BeautySalonClientApp.Controllers
             ViewBag.Purchase = APIClient.GetRequest<PurchaseViewModel>($"api/purchase/GetPurchase?purchaseId={purchaseId}");
             ViewBag.Procedures = APIClient.GetRequest<List<ProcedureViewModel>>("api/purchase/GetProcedureList");
             var purchase = APIClient.GetRequest<PurchaseViewModel> ($"api/purchase/GetPurchase?purchaseId={purchaseId}");
+            var Receipts = APIClient.GetRequest<List<ReceiptViewModel>>("api/receipt/GetReceiptList");
+            var purchaseReceipts = new List<ReceiptViewModel>();
+            foreach (var res in Receipts)
+            {
+                if (res.ReceiptPurchases.ContainsKey(purchaseId))
+                {
+                    purchaseReceipts.Add(res);
+                }
+            }
+            ViewBag.PurchaseReceipts = purchaseReceipts;
             return View(purchase);
         }
 
@@ -367,14 +377,14 @@ namespace BeautySalonClientApp.Controllers
         }
 
         [HttpPost]
-        public void AddReceiptPurchases(int receiptId, int purchaseId)
+        public void AddReceiptPurchases(int receiptId, List<int> purchesesId)
         {
-            if (receiptId != 0 && purchaseId != 0)
+            if (receiptId != 0 && purchesesId != null)
             {
-                APIClient.PostRequest("api/purchase/AddReceiptPurchases", new AddPurchasesBindingModel
+                APIClient.PostRequest("api/receipt/AddReceiptPurchases", new AddPurchasesBindingModel
                 {
                     ReceiptId = receiptId,
-                    PurchaseId = purchaseId
+                    PurchasesId = purchesesId
                 });
                 Response.Redirect("Purchase");
                 return;
