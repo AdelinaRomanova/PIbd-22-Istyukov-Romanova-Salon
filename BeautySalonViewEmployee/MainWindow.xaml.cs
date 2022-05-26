@@ -25,6 +25,17 @@ namespace BeautySalonViewEmployee
             InitializeComponent();
         }
 
+        private void MainWindow_Loaded()
+        {
+            LoadData();
+        }
+        private void LoadData()
+        {
+            //var employee = logic.Read(new EmployeeBindingModel { Id = id })?[0];
+            //lbl_Employee.Content = "Сотрудник: " + employee.F_Name + " " + employee.L_Name;
+        }
+
+
         private void CosmeticMenuItem_Click(object sender, RoutedEventArgs e)
         {
             //var window = Container.Resolve<WindowCosmetics>();

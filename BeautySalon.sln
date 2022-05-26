@@ -15,7 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeautySalonRestApi", "Beaut
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeautySalonClientApp", "BeautySalonClientApp\BeautySalonClientApp.csproj", "{5724F8C5-EE00-45E8-B938-B8ADAB4A3A31}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeautySalonViewEmployee", "BeautySalonViewEmployee\BeautySalonViewEmployee.csproj", "{287AB6C5-775E-45AD-962B-293338AD341C}"
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalonViewEmployee", "BeautySalonViewEmployee\BeautySalonViewEmployee.csproj", "{287AB6C5-775E-45AD-962B-293338AD341C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
