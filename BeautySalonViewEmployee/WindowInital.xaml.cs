@@ -8,9 +8,6 @@ namespace BeautySalonViewEmployee
     /// </summary>
     public partial class WindowInital : Window
     {
-        [Dependency]
-        public IUnityContainer Container { get; set; }
-
         public WindowInital()
         {
             InitializeComponent();
@@ -18,13 +15,13 @@ namespace BeautySalonViewEmployee
 
         private void buttonRegister_Click(object sender, RoutedEventArgs e)
         {
-            var window = Container.Resolve<WindowRegistration>();
+            var window = App.Container.Resolve<WindowRegistration>();
             window.ShowDialog();
         }
 
         private void buttonAuthorization_Click(object sender, RoutedEventArgs e)
         {
-            var window = Container.Resolve<WindowAuthorization>();
+            var window = App.Container.Resolve<WindowAuthorization>();
             window.ShowDialog();
         }
     }

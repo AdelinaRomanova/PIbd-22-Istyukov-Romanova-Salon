@@ -1,4 +1,5 @@
-﻿using BeautySalonContracts.BusinessLogicsContracts;
+﻿using BeautySalonBusinessLogic.BusinessLogics;
+using BeautySalonContracts.BusinessLogicsContracts;
 using BeautySalonContracts.StoragesContracts;
 using BeautySalonDatabaseImplement.Implements;
 using System;
@@ -14,11 +15,23 @@ namespace BeautySalonViewEmployee
     /// </summary>
     public partial class App : Application
     {
+        private static IUnityContainer container = null;
+        public static IUnityContainer Container
+        {
+            get
+            {
+                if (container == null)
+                {
+                    container = BuildUnityContainer();
+                }
+                return container;
+            }
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
-            IUnityContainer currentContainer = BuildUnityContainer();
             /*
             MailLogic.MailConfig(new MailConfig
             {
@@ -28,7 +41,7 @@ namespace BeautySalonViewEmployee
                 MailPassword = ConfigurationManager.AppSettings["MailPassword"],
             }); */
 
-            var mainWindow = currentContainer.Resolve<WindowInital>();
+            var mainWindow = Container.Resolve<WindowInital>();
             mainWindow.Show();
         }
 
@@ -41,14 +54,14 @@ namespace BeautySalonViewEmployee
             currentContainer.RegisterType<IReceiptStorage, ReceiptStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IVisitStorage, VisitStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IPurchaseStorage, PurchaseStorage>(new HierarchicalLifetimeManager());
-            /*currentContainer.RegisterType<IReportStorage, ReportStorage>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IStatisticStorage, StatisticStorage>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<CosmeticLogic>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<DistributionLogic>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<EmployeeLogic>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<ReceiptLogic>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<ReportLogicEmployee>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<MailLogic>(new HierarchicalLifetimeManager()); */
+            //currentContainer.RegisterType<IReportStorage, ReportStorage>(new HierarchicalLifetimeManager());
+
+            currentContainer.RegisterType<ICosmeticLogic, CosmeticLogic >(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IDistributionLogic, DistributionLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IEmployeeLogic, EmployeeLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IReceiptLogic, ReceiptLogic>(new HierarchicalLifetimeManager());
+            //currentContainer.RegisterType<ReportLogicEmployee>(new HierarchicalLifetimeManager());
+            //currentContainer.RegisterType<MailLogic>(new HierarchicalLifetimeManager());
             return currentContainer;
         }
     }

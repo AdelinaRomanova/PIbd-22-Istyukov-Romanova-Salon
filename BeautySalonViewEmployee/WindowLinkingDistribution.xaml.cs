@@ -2,10 +2,7 @@
 using BeautySalonContracts.BusinessLogicsContracts;
 using BeautySalonContracts.ViewModels;
 using System;
-using System.ComponentModel;
-using System.Reflection;
 using System.Windows;
-using System.Windows.Controls;
 using Unity;
 
 namespace BeautySalonViewEmployee
