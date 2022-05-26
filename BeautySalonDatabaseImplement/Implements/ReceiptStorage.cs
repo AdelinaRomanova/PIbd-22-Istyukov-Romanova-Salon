@@ -19,6 +19,8 @@ namespace BeautySalonDatabaseImplement.Implements
                     .Include(rec => rec.Employee)
                     .Include(rec => rec.ReceiptCosmetics)
                     .ThenInclude(rec => rec.Cosmetic)
+                    .Include(rec => rec.ReceiptPurcheses)
+                    .ThenInclude(rec => rec.Purchase)
                     .Select(CreateModel)
                     .ToList();
             }
@@ -35,6 +37,8 @@ namespace BeautySalonDatabaseImplement.Implements
                 .Include(rec => rec.Employee)
                 .Include(rec => rec.ReceiptCosmetics)
                 .ThenInclude(rec => rec.Cosmetic)
+                .Include(rec => rec.ReceiptPurcheses)
+                .ThenInclude(rec => rec.Purchase)
                 .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.EmployeeId == model.EmployeeId) ||
                 (model.DateFrom.HasValue && model.DateTo.HasValue && rec.EmployeeId == model.EmployeeId && rec.Date.Date >= model.DateFrom.Value.Date && rec.Date.Date <= model.DateTo.Value.Date))
                 .Select(CreateModel)
@@ -53,6 +57,8 @@ namespace BeautySalonDatabaseImplement.Implements
             .Include(rec => rec.Employee)
             .Include(rec => rec.ReceiptCosmetics)
             .ThenInclude(rec => rec.Cosmetic)
+            .Include(rec => rec.ReceiptPurcheses)
+            .ThenInclude(rec => rec.Purchase)
             .FirstOrDefault(rec => rec.Id == model.Id);
             return receipt != null ? CreateModel(receipt) : null;
         }
@@ -64,8 +70,15 @@ namespace BeautySalonDatabaseImplement.Implements
                 {
                     try
                     {
-                        context.Receipts.Add(CreateModel(model, new Receipt(), context));
+                        Receipt receipt = new Receipt()
+                        {
+                            Date = model.Date,
+                            TotalCost = model.TotalCost,
+                            EmployeeId = (int)model.EmployeeId
+                        };
+                        context.Receipts.Add(receipt);
                         context.SaveChanges();
+                        CreateModel(model, receipt, context);
                         transaction.Commit();
                     }
                     catch
@@ -152,6 +165,16 @@ namespace BeautySalonDatabaseImplement.Implements
                 });
                 context.SaveChanges();
             }
+            // добавили новые
+            foreach (var rp in model.ReceiptPurchases)
+            {
+                context.PurchaseReceipts.Add(new PurchaseReceipt
+                {
+                    ReceiptId = receipt.Id,
+                    PurchaseId = rp.Key,
+                });
+                context.SaveChanges();
+            }
             return receipt;
         }
         private ReceiptViewModel CreateModel(Receipt receipt)
@@ -162,7 +185,9 @@ namespace BeautySalonDatabaseImplement.Implements
                 TotalCost = receipt.TotalCost,
                 Date = receipt.Date,
                 ReceiptCosmetics = receipt.ReceiptCosmetics.ToDictionary(recRC => recRC.CosmeticId, recRC => (recRC.Cosmetic?.CosmeticName, recRC.Count)),
-                EmployeeId = receipt.EmployeeId
+                EmployeeId = receipt.EmployeeId,
+                ReceiptPurchases = receipt.ReceiptPurcheses
+                .ToDictionary(recDC => recDC.PurchaseId, recDC => recDC.Purchase.Price)
             };
         }
     }

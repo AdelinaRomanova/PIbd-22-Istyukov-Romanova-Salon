@@ -1,0 +1,1 @@
+INSERT INTO Receipts VALUES (1, 700,'2022-05-11');

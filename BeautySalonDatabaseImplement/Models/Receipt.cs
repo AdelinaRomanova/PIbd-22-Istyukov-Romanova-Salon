@@ -23,5 +23,7 @@ namespace BeautySalonDatabaseImplement.Models
 
         [ForeignKey("ReceiptId")]
         public virtual List<ReceiptCosmetic> ReceiptCosmetics { get; set; }
+        [ForeignKey("ReceiptId")]
+        public virtual List<PurchaseReceipt> ReceiptPurcheses { get; set; }
     }
 }

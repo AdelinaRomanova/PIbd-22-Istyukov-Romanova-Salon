@@ -16,8 +16,9 @@ namespace BeautySalonDatabaseImplement.Implements
             using (var context = new BeautySalonDatabase())
             {
                 return context.Purchases
+                .Include(rec => rec.PurchaseReceipts)
+                .ThenInclude(rec => rec.Receipt)
                 .Include(rec => rec.Client)
-                .Include(rec => rec.Receipt)
                 .Include(rec => rec.ProcedurePurchase)
                 .ThenInclude(rec => rec.Procedure)
                 .Select(CreateModel)
@@ -33,8 +34,9 @@ namespace BeautySalonDatabaseImplement.Implements
             using (var context = new BeautySalonDatabase())
             {
                 return context.Purchases
+                .Include(rec => rec.PurchaseReceipts)
+                .ThenInclude(rec => rec.Receipt)
                 .Include(rec => rec.Client)
-                .Include(rec => rec.Receipt)
                 .Include(rec => rec.ProcedurePurchase)
                 .ThenInclude(rec => rec.Procedure)
                 .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.Date.Date == model.Date.Date) ||
@@ -52,10 +54,11 @@ namespace BeautySalonDatabaseImplement.Implements
             }
             using var context = new BeautySalonDatabase();
                 var purchase = context.Purchases
+                .Include(rec => rec.PurchaseReceipts)
+                .ThenInclude(rec => rec.Receipt)
                 .Include(rec => rec.ProcedurePurchase)
                 .ThenInclude(rec => rec.Procedure)
                 .Include(rec => rec.Client)
-                .Include(rec => rec.Receipt)
                 .FirstOrDefault(rec => rec.Id == model.Id);
             return purchase != null ? CreateModel(purchase) : null;
         }

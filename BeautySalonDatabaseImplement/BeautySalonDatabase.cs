@@ -26,5 +26,6 @@ namespace BeautySalonDatabaseImplement
         public virtual DbSet<ProcedurePurchase> ProcedurePurchases { get; set; }
         public virtual DbSet<ProcedureVisit> ProcedureVisits { get; set; }
         public virtual DbSet<Visit> Visits { set; get; }
+        public virtual DbSet<PurchaseReceipt> PurchaseReceipts { set; get; }
     }
 }

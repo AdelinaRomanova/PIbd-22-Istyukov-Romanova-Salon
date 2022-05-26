@@ -39,6 +39,25 @@
             }
         </tbody>
     </table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Чеки
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.PurchaseReceipts)
+            {
+                <tr>
+                    <td>
+                        @item.Date
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
     <div class="row">
         <div class="col-4"></div>
         <div class="col-8">
