@@ -101,7 +101,7 @@ namespace BeautySalonBusinessLogic.BusinessLogics
         }
        
         // Сохранение покупок в файл-Word
-        public void SavePurchaseListToWordFile(ReportClientBindingModel model)
+        public void SaveProcedureDistributionsToWordFile(ReportClientBindingModel model)
         {
             _saveToWord.CreateDoc(new WordInfoClient
             {
@@ -112,7 +112,7 @@ namespace BeautySalonBusinessLogic.BusinessLogics
         }
         
         // Сохранение покупок в файл-Excel
-        public void SavePurchaseListToExcelFile(ReportClientBindingModel model)
+        public void SaveProcedureDistributionsToExcelFile(ReportClientBindingModel model)
         {
             _saveToExcel.CreateReport(new ExcelInfoClient
             {
@@ -123,7 +123,7 @@ namespace BeautySalonBusinessLogic.BusinessLogics
         }
 
         /// Сохранение процедур в файл-Pdf
-        public void SaveProceduresToPdfFile(ReportClientBindingModel model)
+        public void SaveProcedureToPdfFile(ReportClientBindingModel model)
         {
             _saveToPdf.CreateDoc(new PdfInfoClient
             {

@@ -20,13 +20,13 @@ namespace BeautySalonRestApi.Controllers
         }
 
         [HttpPost]
-        public void SavePurchaseListToWordFile(ReportClientBindingModel model) => _reportLogic.SavePurchaseListToWordFile(model);
+        public void SavePurchaseListToWordFile(ReportClientBindingModel model) => _reportLogic.SaveProcedureDistributionsToWordFile(model);
 
         [HttpPost]
-        public void SavePurchaseListToExcelFile(ReportClientBindingModel model) => _reportLogic.SavePurchaseListToExcelFile(model);
+        public void SavePurchaseListToExcelFile(ReportClientBindingModel model) => _reportLogic.SaveProcedureDistributionsToExcelFile(model);
 
         [HttpPost]
-        public void SaveProceduresToPdfFile(ReportClientBindingModel model) => _reportLogic.SaveProceduresToPdfFile(model);
+        public void SaveProceduresToPdfFile(ReportClientBindingModel model) => _reportLogic.SaveProcedureToPdfFile(model);
 
         //[HttpGet]
         //public ReportBindingModel GetClientsForReport(int ClerkId)
