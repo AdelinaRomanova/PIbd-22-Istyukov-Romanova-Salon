@@ -24,13 +24,6 @@ namespace BeautySalonRestApi
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            MailLogic.MailConfig(new MailConfigBindingModel
-            {
-                SmtpClientHost = configuration["SmtpClientHost"],
-                SmtpClientPort = Convert.ToInt32(configuration["SmtpClientPort"]),
-                MailLogin = configuration["MailLogin"],
-                MailPassword = configuration["MailPassword"],
-            });
         }
 
         public IConfiguration Configuration { get; }
@@ -41,15 +34,17 @@ namespace BeautySalonRestApi
 
             services.AddTransient<IClientStorage, ClientStorage>();
             services.AddTransient<IProcedureStorage, ProcedureStorage>();
+            services.AddTransient<IPurchaseStorage, PurchaseStorage>();
             services.AddTransient<IVisitStorage, VisitStorage>();
+            services.AddTransient<IReceiptStorage, ReceiptStorage>();
 
             services.AddTransient<IClientLogic, ClientLogic>();
             services.AddTransient<IProcedureLogic, ProcedureLogic>();
             services.AddTransient<IVisitLogic, VisitLogic>();
+            services.AddTransient<IPurchaseLogic, PurchaseLogic>();
+            services.AddTransient<IReceiptLogic, ReceiptLogic>();
 
-            services.AddTransient<MailLogic>();
-
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo

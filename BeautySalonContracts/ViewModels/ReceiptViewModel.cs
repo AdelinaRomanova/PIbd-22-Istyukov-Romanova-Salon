@@ -14,5 +14,6 @@ namespace BeautySalonContracts.ViewModels
         [DisplayName("Дата покупки")]
         public DateTime Date { get; set; }
         public Dictionary<int, (string, int)> ReceiptCosmetics { get; set; }
+        public Dictionary<int, decimal> ReceiptPurchases { get; set; }
     }
 }

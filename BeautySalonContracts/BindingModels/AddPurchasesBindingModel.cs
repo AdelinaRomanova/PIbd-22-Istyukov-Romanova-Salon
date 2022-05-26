@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace BeautySalonContracts.BindingModels
 {
-    public class PurchaseLinkingBindingModel
+    public class AddPurchasesBindingModel
     {
-        public int PurchaseId { get; set; }
-
         public int ReceiptId { get; set; }
+        public List<int> PurchasesId { get; set; }
     }
 }

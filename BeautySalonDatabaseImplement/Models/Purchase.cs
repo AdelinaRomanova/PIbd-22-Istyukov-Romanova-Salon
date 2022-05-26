@@ -9,7 +9,7 @@ namespace BeautySalonDatabaseImplement.Models
     {
 		public int Id { get; set; }
 		public int ClientId { get; set; }
-		public int ReceiptId { get; set; }
+		public int? ReceiptId { get; set; }
 
 		[Required]
 		public decimal Price { get; set; }
@@ -22,5 +22,6 @@ namespace BeautySalonDatabaseImplement.Models
 
 		[ForeignKey("PurchaseId")]
 		public virtual List<ProcedurePurchase> ProcedurePurchase { get; set; }
+		
 	}
 }

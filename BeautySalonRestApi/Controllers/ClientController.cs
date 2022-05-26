@@ -3,6 +3,7 @@ using BeautySalonContracts.BusinessLogicsContracts;
 using BeautySalonContracts.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace BeautySalonRestApi.Controllers
@@ -11,13 +12,16 @@ namespace BeautySalonRestApi.Controllers
     [ApiController]
     public class ClientController : ControllerBase
     {
-        private readonly int _passwordMaxLength = 20;
-        private readonly int _passwordMinLength = 5;
-
         private readonly IClientLogic _logic;
-        public ClientController(IClientLogic logic)
+        private readonly IPurchaseLogic _purchaseLogic;
+        private readonly IVisitLogic _visitLogic;
+        private readonly IProcedureLogic _procedureLogic;
+        public ClientController(IClientLogic logic, IPurchaseLogic purchaseLogic, IVisitLogic visitLogic, IProcedureLogic procedureLogic)
         {
             _logic = logic;
+            _purchaseLogic = purchaseLogic;
+            _visitLogic = visitLogic;
+            _procedureLogic = procedureLogic;
         }
 
         [HttpGet]
@@ -34,28 +38,19 @@ namespace BeautySalonRestApi.Controllers
         [HttpPost]
         public void Register(ClientBindingModel model)
         {
-            CheckData(model);
             _logic.CreateOrUpdate(model);
         }
 
+        [HttpGet]
+        public List<PurchaseViewModel> GetClientPurchaseList(int clientId) => _purchaseLogic.Read(new PurchaseBindingModel { ClientId = clientId });
+        [HttpGet]
+        public List<ProcedureViewModel> GetClientProcedureList(int clientId) => _procedureLogic.Read(new ProcedureBindingModel { ClientId = clientId });
+
+        [HttpGet]
+        public List<VisitViewModel> GetClientVisitList(int clientId) => _visitLogic.Read(new VisitBindingModel { ClientId = clientId });
+
         [HttpPost]
         public void UpdateData(ClientBindingModel model) => _logic.CreateOrUpdate(model);
-
-        private void CheckData(ClientBindingModel model)
-        {
-            if (!Regex.IsMatch(model.Email, @"^(?("")(""[^""]+?""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
-                @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9]{2,17}))$"))
-            {
-                throw new Exception("В качестве логина должна быть указана почта");
-            }
-            if (model.Password.Length > _passwordMaxLength || model.Password.Length <
-            _passwordMinLength || !Regex.IsMatch(model.Password,
-            @"^((\w+\d+\W+)|(\w+\W+\d+)|(\d+\w+\W+)|(\d+\W+\w+)|(\W+\w+\d+)|(\W+\d+\w+))[\w\d\W]*$"))
-            {
-                throw new Exception($"Пароль длиной от {_passwordMinLength} до {_passwordMaxLength }" +
-                    $" должен состоять и из цифр, букв и небуквенных символов");
-            }
-        }
     }
 
 }

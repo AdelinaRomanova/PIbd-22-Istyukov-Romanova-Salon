@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BeautySalonDatabaseImplement.Migrations
 {
     [DbContext(typeof(BeautySalonDatabase))]
-    [Migration("20220523104411_InitialCreate17")]
-    partial class InitialCreate17
+    [Migration("20220524181054_InitialCreate43")]
+    partial class InitialCreate43
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -256,7 +256,7 @@ namespace BeautySalonDatabaseImplement.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ReceiptId")
+                    b.Property<int?>("ReceiptId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -444,9 +444,7 @@ namespace BeautySalonDatabaseImplement.Migrations
 
                     b.HasOne("BeautySalonDatabaseImplement.Models.Receipt", "Receipt")
                         .WithMany("Purchases")
-                        .HasForeignKey("ReceiptId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ReceiptId");
 
                     b.Navigation("Client");
 

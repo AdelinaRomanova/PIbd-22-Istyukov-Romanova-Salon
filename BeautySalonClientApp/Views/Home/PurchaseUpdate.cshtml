@@ -1,0 +1,64 @@
+﻿@using BeautySalonContracts.ViewModels;
+@model PurchaseViewModel;
+@{
+    ViewData["Title"] = "Update Purchase";
+}
+<div class="text-center">
+    <h2 class="display-4">Изменение покупки</h2>
+</div>
+<form method="post">
+    <div class="row">
+        <div class="col-4">Дата обучения:</div>
+        <div class="col-4 form-group">
+            <input asp-for="Date" id="datepicker" name="datepicker" class="form-control" />
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">Процедуры:</div>
+        <div class="col-8">
+            <select id="proceduresId" name="proceduresId" multiple="multiple" class="form-control" asp-items="@(new SelectList(@ViewBag.Procedures,"Id", "ProcedureName", "Price"))"></select>
+        </div>
+    </div> 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Список процедур
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.Purchase.PurchaseProcedures)
+            {
+                <tr>
+                    <td>
+                        @item.Value
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-8">
+            <input type="submit" value="Изменить" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+@section Scripts
+    {
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+        $(function () {
+              $("#date").datepicker();
+            $('#date').datepicker("setDate", @Model.Date);
+        });
+    </script>
+}

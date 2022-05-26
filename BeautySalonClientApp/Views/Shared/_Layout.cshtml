@@ -6,6 +6,8 @@
     <title>@ViewData["Title"] - BeautySalonClientApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <header>
@@ -26,6 +28,23 @@
                             <a class="nav-link text-dark" asp-area=""
                                asp-controller="Home" asp-action="Purchase">Покупки</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area=""
+                               asp-controller="Home" asp-action="Visit">Посещения</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area=""
+                               asp-controller="Home" asp-action="AddReceiptPurchases">Привязка покупки к чеку</a>
+                        </li>
+                         <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Отчёты
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" asp-area="" asp-controller="Report" asp-action="ReportWordExcel">Отчёт Word/Excel</a>
+                          <a class="dropdown-item" asp-area="" asp-controller="Report" asp-action="ReportPDF">Отчёт PDF</a>
+                        </div>
+                    </li>   
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area=""
                                asp-controller="Home" asp-action="Privacy">Личные данные</a>
@@ -54,9 +73,8 @@
             &copy; 2022 - BeautySalonClientApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -51,30 +51,36 @@ namespace BeautySalonDatabaseImplement.Implements
             using (var context = new BeautySalonDatabase())
             {
                 var visit = context.Visits
-                .FirstOrDefault(rec => rec.Date == model.Date || rec.Id == model.Id);
+                .Include(rec => rec.Client)
+                .Include(rec => rec.ProcedureVisit)
+                .ThenInclude(rec => rec.Procedure)
+                .FirstOrDefault(rec => rec.Id == model.Id);
                 return visit != null ? CreateModel(visit) : null;
             }
         }
         public void Insert(VisitBindingModel model)
         {
-            using (var context = new BeautySalonDatabase())
+            using var context = new BeautySalonDatabase();
+            using var transaction = context.Database.BeginTransaction();
+            try
             {
-                using (var transaction = context.Database.BeginTransaction())
+                Visit visit = new Visit()
                 {
-                    try
-                    {
-                        context.Visits.Add(CreateModel(model, new Visit(), context));
-                        context.SaveChanges();
-                        transaction.Commit();
-                    }
-                    catch
-                    {
-                        transaction.Rollback();
-                        throw;
-                    }
-                }
+                    Date = model.Date,
+                    ClientId = (int)model.ClientId
+                };
+                context.Visits.Add(visit);
+                context.SaveChanges();
+                context.Visits.Add(CreateModel(model, visit, context));
+                transaction.Commit();
+            }
+            catch
+            {
+                transaction.Rollback();
+                throw;
             }
         }
+
         public void Update(VisitBindingModel model)
         {
             using (var context = new BeautySalonDatabase())

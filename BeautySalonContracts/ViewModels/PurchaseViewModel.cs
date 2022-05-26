@@ -7,7 +7,7 @@ namespace BeautySalonContracts.ViewModels
     public class PurchaseViewModel
     {
         public int Id { get; set; }
-        public int ClientId { get; set; }
+        public int? ClientId { get; set; }
         public int? ReceiptId { get; set; }
 
         [DisplayName("Дата покупки")]
@@ -18,7 +18,8 @@ namespace BeautySalonContracts.ViewModels
 
         [DisplayName("Процедуры")]
         public Dictionary<int, (string, decimal)> PurchaseProcedures { get; set; }
-        public List<int> ProcedureIds { get; set; }
+        public List<int> ProceduresId { get; set; }
+
 
     }
 }

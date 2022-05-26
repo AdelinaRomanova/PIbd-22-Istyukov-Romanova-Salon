@@ -11,7 +11,7 @@ namespace BeautySalonContracts.BindingModels
 		public int? Id { get; set; }
 		public int? ClientId { get; set; }
 		public DateTime Date { get; set; }
-		public Dictionary<int, (string, decimal)> VisitProcedures { get; set; }
+		public Dictionary<int, string> VisitProcedures { get; set; }
 		public DateTime? DateFrom { get; set; }
 		public DateTime? DateTo { get; set; }
 	}

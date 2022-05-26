@@ -37,7 +37,7 @@ namespace BeautySalonBusinessLogic.BusinessLogics
         {
             var listAll = new List<ReportProceduresViewModel>();
 
-            var listPurchases = _purchaseStorage.GetFilteredList(new PurchaseBindingModel { ClientId = model.ClientId, DateFrom = model.DateFrom, DateTo = model.DateTo });
+            var listPurchases = _purchaseStorage.GetFilteredList(new PurchaseBindingModel { ClientId = (int)model.ClientId, DateFrom = model.DateFrom, DateTo = model.DateTo });
             foreach (var purchase in listPurchases)
             {
                 foreach (var purch in purchase.PurchaseProcedures)
@@ -101,24 +101,24 @@ namespace BeautySalonBusinessLogic.BusinessLogics
         }
        
         // Сохранение покупок в файл-Word
-        public void SavePurchaseListToWordFile(ReportClientBindingModel model, string name)
+        public void SavePurchaseListToWordFile(ReportClientBindingModel model)
         {
             _saveToWord.CreateDoc(new WordInfoClient
             {
                 FileName = model.FileName,
                 Title = "Сведения по выдачам",
-                DistributionProcedure = GetDistributionList(new ReportDistributionProcedureBindingModel { ProcedureName = name })
+                DistributionProcedure = GetDistributionList(new ReportDistributionProcedureBindingModel())
             });
         }
         
         // Сохранение покупок в файл-Excel
-        public void SavePurchaseListToExcelFile(ReportClientBindingModel model, string name)
+        public void SavePurchaseListToExcelFile(ReportClientBindingModel model)
         {
             _saveToExcel.CreateReport(new ExcelInfoClient
             {
                 FileName = model.FileName,
                 Title = "Сведения по выдачам",
-                DistributionProcedure = GetDistributionList(new ReportDistributionProcedureBindingModel { ProcedureName = name })
+                DistributionProcedure = GetDistributionList(new ReportDistributionProcedureBindingModel())
             });
         }
 

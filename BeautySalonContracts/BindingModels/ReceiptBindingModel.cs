@@ -13,6 +13,7 @@ namespace BeautySalonContracts.BindingModels
         public decimal TotalCost { get; set; }
         public DateTime Date { get; set; }
         public Dictionary<int, (string, int)> ReceiptCosmetics { get; set; }
+        public Dictionary<int, decimal> ReceiptPurchases { get; set; }
         public DateTime? DateFrom { get; set; }
         public DateTime? DateTo { get; set; }
     }

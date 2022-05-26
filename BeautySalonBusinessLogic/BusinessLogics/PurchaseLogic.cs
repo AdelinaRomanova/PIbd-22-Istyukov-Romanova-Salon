@@ -54,43 +54,5 @@ namespace BeautySalonBusinessLogic.BusinessLogics
             }
             _purchaseStorage.Delete(model);
         }
-        public void Linking(PurchaseLinkingBindingModel model)
-        {
-            var purchase = _purchaseStorage.GetElement(new PurchaseBindingModel
-            {
-                Id = model.PurchaseId
-            });
-
-            var receipt = _receiptStorage.GetElement(new ReceiptBindingModel
-            {
-                Id = model.ReceiptId
-            });
-
-            if (purchase == null)
-            {
-                throw new Exception("Не найдена покупка");
-            }
-
-            if (receipt == null)
-            {
-                throw new Exception("Не найден чек");
-            }
-
-            if (purchase.ReceiptId.HasValue)
-            {
-                throw new Exception("Данная покупка уже привязана к чеку");
-            }
-
-            _purchaseStorage.Update(new PurchaseBindingModel
-            {
-                Id = purchase.Id,
-                Date = purchase.Date,
-                Price = purchase.Price,
-                PurchaseProcedures = purchase.PurchaseProcedures,
-                ClientId = purchase.ClientId,
-                ReceiptId = model.ReceiptId
-
-            });
-        }
     }
 }

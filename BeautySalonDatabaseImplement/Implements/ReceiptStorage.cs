@@ -47,15 +47,14 @@ namespace BeautySalonDatabaseImplement.Implements
             {
                 return null;
             }
-            using (var context = new BeautySalonDatabase())
-            {
-                var receipt = context.Receipts
-                .Include(rec => rec.Employee)
-                .Include(rec => rec.ReceiptCosmetics)
-                .ThenInclude(rec => rec.Cosmetic)
-                .FirstOrDefault(rec => rec.Date == model.Date || rec.Id == model.Id);
-                return receipt != null ? CreateModel(receipt) : null;
-            }
+            using var context = new BeautySalonDatabase();
+            var receipt = context.Receipts
+            .Include(rec => rec.Purchases)
+            .Include(rec => rec.Employee)
+            .Include(rec => rec.ReceiptCosmetics)
+            .ThenInclude(rec => rec.Cosmetic)
+            .FirstOrDefault(rec => rec.Id == model.Id);
+            return receipt != null ? CreateModel(receipt) : null;
         }
         public void Insert(ReceiptBindingModel model)
         {

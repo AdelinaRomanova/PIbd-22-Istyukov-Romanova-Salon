@@ -35,29 +35,29 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ProcedureName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FIO_Master)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Duration)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-                        <a asp-action="UpdateProcedure" asp-route-Id="@item.Id">Изменить</a>
-                    </td>
-                    <td>
-                        <a asp-action="DeleteProcedure" asp-route-Id="@item.Id">Удалить</a>
-                    </td>
-                </tr>}
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProcedureName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FIO_Master)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Duration)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Price)
+                                    </td>
+                                    <td>
+                                        <a asp-action="UpdateProcedure" asp-route-Id="@item.Id">Изменить</a>
+                                    </td>
+                                    <td>
+                                        <a asp-action="DeleteProcedure" asp-route-Id="@item.Id">Удалить</a>
+                                    </td>
+                                </tr>}
                         </tbody>
                     </table> }
 </div>

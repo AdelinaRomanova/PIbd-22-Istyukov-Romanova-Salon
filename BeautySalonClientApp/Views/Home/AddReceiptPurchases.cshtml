@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Create PurchaseReceipt";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Привязка покупок к чеку</h1>
+</div>
+
+<form method="post">
+    <div class="row">
+        <div class="col-4">Чек:</div>
+        <div class="col-8">
+            <select id="receiptId" name="receiptId" class="form-control" asp-items="@(new SelectList(@ViewBag.Receipts,"Id", "Date", "TotalCost"))"></select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">Покупки:</div>
+        <div class="col-8">
+            <select id="purchasesId" name="purchasesId" multiple="multiple" class="form-control" asp-items="@(new SelectList(@ViewBag.Purchases,"Id", "Date", "Price"))"></select>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-4"></div>
+        <div class="col-8">
+            <input type="submit" value="Привязать" class="btn btn-primary"/>
+            <a type="button" asp-action="Purchase" class="btn btn-primary">Отмена</a>
+        </div>
+    </div>
+</form>

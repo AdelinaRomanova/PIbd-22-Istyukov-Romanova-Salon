@@ -37,20 +37,8 @@ namespace BeautySalonRestApi.Controllers
 		public List<ProcedureViewModel> GetProcedures() => _procedure.Read(null)?.ToList();
 
 		// операции с покупками
-		[HttpGet]
-		public List<PurchaseViewModel> GetClientPurchaseList(int clientId) => _purchase.Read(new PurchaseBindingModel { ClientId = clientId });
+		
 
-		[HttpGet]
-		public PurchaseViewModel GetPurchase(int id) => _purchase.Read(new PurchaseBindingModel { Id = id })?[0];
-
-		[HttpGet]
-		public List<PurchaseViewModel> GetPurchases() => _purchase.Read(null)?.ToList();
-
-		[HttpPost]
-		public void CreatePurchase(PurchaseBindingModel model) => _purchase.CreateOrUpdate(model);
-
-		[HttpPost]
-		public void DeletePurchase(PurchaseBindingModel model) => _purchase.Delete(model);
 
 	}
 }

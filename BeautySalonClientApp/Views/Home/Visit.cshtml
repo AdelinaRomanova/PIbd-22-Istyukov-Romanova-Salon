@@ -1,8 +1,8 @@
 ﻿@using BeautySalonContracts.ViewModels;
-@model List<PurchaseViewModel>
-@{ ViewData["Title"] = "Процедуры"; }
+@model List<VisitViewModel>
+@{ ViewData["Title"] = "Visit"; }
 <div class="text-center">
-    <h1 class="display-4">Покупки</h1>
+    <h1 class="display-4">Посещения</h1>
 </div>
 
 <div class="text-center">
@@ -13,7 +13,7 @@
             return;
         }
         <p>
-            <a class="btn btn-success" asp-action="PurchaseCreate">Добавить покупку</a>
+            <a class="btn btn-success" asp-action="VisitCreate">Добавить посещение</a>
         </p>
         <table class="table">
             <thead>
@@ -22,10 +22,7 @@
                         Номер
                     </th>
                     <th>
-                        Дата покупки
-                    </th>
-                    <th>
-                        Стоимость
+                        Дата посещения
                     </th>
                 </tr>
             </thead>
@@ -40,13 +37,10 @@
                             @Html.DisplayFor(modelItem => item.Date)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Price)
+                            <a asp-action="VisitUpdate" asp-route-visitId="@item.Id">Изменить</a>
                         </td>
                         <td>
-                            <a asp-action="PurchaseUpdate" asp-route-purchaseId="@item.Id">Изменить</a>
-                        </td>
-                        <td>
-                            <a asp-action="PurchaseDelete" asp-route-purchaseId="@item.Id">Удалить</a>
+                            <a asp-action="VisitDelete" asp-route-visitId="@item.Id">Удалить</a>
                         </td>
                     </tr>
                 }

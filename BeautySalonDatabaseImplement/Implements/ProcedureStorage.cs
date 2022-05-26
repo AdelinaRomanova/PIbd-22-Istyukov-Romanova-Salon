@@ -2,6 +2,7 @@
 using BeautySalonContracts.StoragesContracts;
 using BeautySalonContracts.ViewModels;
 using BeautySalonDatabaseImplement.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,12 +40,12 @@ namespace BeautySalonDatabaseImplement.Implements
             {
                 return null;
             }
-            using (var context = new BeautySalonDatabase())
-            {
-                var procedure = context.Procedures
+            using var context = new BeautySalonDatabase();
+            var procedure = context.Procedures
+                .Include(rec => rec.ProcedurePurchase)
+                .ThenInclude(rec => rec.Purchase)
                 .FirstOrDefault(rec => rec.ProcedureName == model.ProcedureName || rec.Id == model.Id);
                 return procedure != null ? CreateModel(procedure) : null;
-            }
         }
         public void Insert(ProcedureBindingModel model)
         {

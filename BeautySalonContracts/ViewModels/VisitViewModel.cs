@@ -11,5 +11,6 @@ namespace BeautySalonContracts.ViewModels
         [DisplayName("Дата посещения")]
         public DateTime Date { get; set; }
         public Dictionary<int, string> VisitProcedures { get; set; }
+        public List<int> ProceduresId { get; set; }
     }
 }

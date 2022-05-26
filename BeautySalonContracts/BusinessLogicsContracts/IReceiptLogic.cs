@@ -9,5 +9,6 @@ namespace BeautySalonContracts.BusinessLogicsContracts
         List<ReceiptViewModel> Read(ReceiptBindingModel model);
         void CreateOrUpdate(ReceiptBindingModel model);
         void Delete(ReceiptBindingModel model);
+        void AddPurchases(AddPurchasesBindingModel model);
     }
 }

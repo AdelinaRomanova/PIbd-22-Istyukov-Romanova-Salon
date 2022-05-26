@@ -50,31 +50,36 @@ namespace BeautySalonDatabaseImplement.Implements
             {
                 return null;
             }
-            using (var context = new BeautySalonDatabase())
-            {
+            using var context = new BeautySalonDatabase();
                 var purchase = context.Purchases
-                .FirstOrDefault(rec => rec.Date == model.Date || rec.Id == model.Id);
-                return purchase != null ? CreateModel(purchase) : null;
-            }
+                .Include(rec => rec.ProcedurePurchase)
+                .ThenInclude(rec => rec.Procedure)
+                .Include(rec => rec.Client)
+                .Include(rec => rec.Receipt)
+                .FirstOrDefault(rec => rec.Id == model.Id);
+            return purchase != null ? CreateModel(purchase) : null;
         }
         public void Insert(PurchaseBindingModel model)
         {
-            using (var context = new BeautySalonDatabase())
-            {
-                using (var transaction = context.Database.BeginTransaction())
+            using var context = new BeautySalonDatabase();
+            using var transaction = context.Database.BeginTransaction();
+            try {
+                Purchase purchase = new Purchase()
                 {
-                    try
-                    {
-                        context.Purchases.Add(CreateModel(model, new Purchase(), context));
-                        context.SaveChanges();
-                        transaction.Commit();
-                    }
-                    catch
-                    {
-                        transaction.Rollback();
-                        throw;
-                    }
-                }
+                    Date = model.Date,
+                    Price = model.Price,
+                    ClientId = (int)model.ClientId,                  
+                    ReceiptId = model.ReceiptId
+                };
+                context.Purchases.Add(purchase);
+                context.SaveChanges();
+                context.Purchases.Add(CreateModel(model, purchase, context));
+                transaction.Commit();
+            }
+            catch
+            {
+                transaction.Rollback();
+                throw;
             }
         }
         public void Update(PurchaseBindingModel model)
@@ -104,18 +109,16 @@ namespace BeautySalonDatabaseImplement.Implements
         }
         public void Delete(PurchaseBindingModel model)
         {
-            using (var context = new BeautySalonDatabase())
+            using var context = new BeautySalonDatabase();
+            Purchase element = context.Purchases.FirstOrDefault(rec => rec.Id == model.Id);
+            if (element != null)
             {
-                Purchase element = context.Purchases.FirstOrDefault(rec => rec.Id == model.Id);
-                if (element != null)
-                {
-                    context.Purchases.Remove(element);
-                    context.SaveChanges();
-                }
-                else
-                {
-                    throw new Exception("Покупка не найдена");
-                }
+                context.Purchases.Remove(element);
+                context.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Покупка не найдена");
             }
         }
         private Purchase CreateModel(PurchaseBindingModel model, Purchase purchase, BeautySalonDatabase context)
@@ -123,14 +126,14 @@ namespace BeautySalonDatabaseImplement.Implements
             purchase.Date = model.Date;
             purchase.ClientId = (int)model.ClientId;
             purchase.Price = model.Price;
-            if (model.ReceiptId != null)
-            {
-                purchase.ReceiptId = (int)model.ReceiptId;
-            }
             if (purchase.Id == 0)
             {
                 context.Purchases.Add(purchase);
                 context.SaveChanges();
+            }
+            if (model.ReceiptId != null)
+            {
+                purchase.ReceiptId = (int)model.ReceiptId;
             }
             if (model.Id.HasValue)
             {
@@ -143,7 +146,6 @@ namespace BeautySalonDatabaseImplement.Implements
 
                     model.PurchaseProcedures.Remove(updateProcedure.ProcedureId);
                 }
-
                 context.SaveChanges();
 
             }
@@ -169,7 +171,8 @@ namespace BeautySalonDatabaseImplement.Implements
                 Date = purchase.Date,
                 Price = purchase.Price,
                 PurchaseProcedures = purchase.ProcedurePurchase.ToDictionary(recPP => recPP.ProcedureId, recPP => (recPP.Procedure?.ProcedureName, recPP.Procedure.Price)),
-                ReceiptId = purchase.ReceiptId
+                ReceiptId = purchase.ReceiptId,
+                ProceduresId = purchase.ProcedurePurchase.Select(rec => rec.ProcedureId).ToList()
             };
         }
     }

@@ -2,6 +2,7 @@
 using BeautySalonContracts.BindingModels;
 using BeautySalonContracts.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using System;
@@ -188,46 +189,197 @@ namespace BeautySalonClientApp.Controllers
         }
 
         // --------------PURCHASES-----------------
-
-        [HttpGet]
         public IActionResult Purchase()
         {
             if (Program.Client == null)
             {
                 return Redirect("~/Home/Enter");
             }
-            return View(APIClient.GetRequest<List<ClientViewModel>>($"api/main/GetClientPurchaseList?clientId={Program.Client.Id}"));
+            return View(APIClient.GetRequest<List<PurchaseViewModel>>($"api/client/GetClientPurchaseList?clientId={Program.Client.Id}"));
         }
 
         [HttpGet]
-        public IActionResult CreatePurchase()
+        public IActionResult PurchaseCreate()
         {
-            ViewBag.Procedures = APIClient.GetRequest<List<ProcedureViewModel>>("api/client/GetProcedures");
+            ViewBag.Procedures = new MultiSelectList(APIClient.GetRequest<List<ProcedureViewModel>>($"api/purchase/GetProcedureList"),
+                "Id", "ProcedureName", "Price");
+            return View(new PurchaseViewModel());
+        }
+
+        [HttpPost]
+        public void PurchaseCreate(DateTime datepicker,[Bind("ProceduresId", "ProcedureName")] PurchaseViewModel model)
+        {
+            List<ProcedureViewModel> procedures = model.ProceduresId.
+                Select(rec => APIClient.GetRequest<ProcedureViewModel>($"api/purchase/GetProcedure?procedureId={rec}")).ToList();
+            if (datepicker != DateTime.MinValue && procedures != null)
+            {
+                APIClient.PostRequest("api/purchase/CreateOrUpdatePurchase", new PurchaseBindingModel
+                {
+                    Price = procedures.Sum(rec => rec.Price),
+                    Date = datepicker,
+                    PurchaseProcedures = procedures.ToDictionary(rec=>(rec.Id),(rec=>(rec.ProcedureName,rec.Price))),
+                    ClientId = Program.Client.Id
+                });
+                Response.Redirect("Purchase");
+                return;
+            }
+        }
+
+        [HttpGet]
+        public IActionResult PurchaseUpdate(int purchaseId)
+        {
+            ViewBag.Purchase = APIClient.GetRequest<PurchaseViewModel>($"api/purchase/GetPurchase?purchaseId={purchaseId}");
+            ViewBag.Procedures = APIClient.GetRequest<List<ProcedureViewModel>>("api/purchase/GetProcedureList");
+            var purchase = APIClient.GetRequest<PurchaseViewModel> ($"api/purchase/GetPurchase?purchaseId={purchaseId}");
+            return View(purchase);
+        }
+
+        [HttpPost]
+        public void PurchaseUpdate(int purchaseId, DateTime datepicker, List<int> proceduresId)
+        {
+            if (datepicker != DateTime.MinValue && proceduresId != null)
+            {
+                var purchase = APIClient.GetRequest<PurchaseViewModel>($"api/purchase/GetPurchase?purchaseId={purchaseId}");
+                if (purchase == null)
+                {
+                    return;
+                }
+                List<ProcedureViewModel> procedures = new List<ProcedureViewModel>();
+                foreach (var procedureId in proceduresId)
+                {
+                    procedures.Add(APIClient.GetRequest<ProcedureViewModel>($"api/purchase/GetProcedure?procedureId={procedureId}"));
+                }
+                APIClient.PostRequest("api/purchase/CreateOrUpdatePurchase", new PurchaseBindingModel
+                {
+                    Id = purchase.Id,
+                    Price = procedures.Sum(rec => rec.Price),
+                    Date = datepicker,
+                    PurchaseProcedures = procedures.ToDictionary(rec => (rec.Id), (rec => (rec.ProcedureName, rec.Price))),
+                    ClientId = Program.Client.Id
+                });
+                Response.Redirect("Purchase");
+                return;
+            }
+            throw new Exception("Введите дату и выберите процедуры");
+            
+        }
+
+        [HttpGet]
+        public void PurchaseDelete(int purchaseId)
+        {
+            var purchase = APIClient.GetRequest<PurchaseViewModel>($"api/purchase/GetPurchase?purchaseId={purchaseId}");
+            APIClient.PostRequest("api/purchase/DeletePurchase", purchase);
+            Response.Redirect("Purchase");
+        }
+
+        // --------------VISIT-----------------
+        public IActionResult Visit()
+        {
+            if (Program.Client == null)
+            {
+                return Redirect("~/Home/Enter");
+            }
+            return View(APIClient.GetRequest<List<VisitViewModel>>($"api/client/GetClientVisitList?clientId={Program.Client.Id}"));
+        }
+
+        [HttpGet]
+        public IActionResult VisitCreate()
+        {
+            ViewBag.Procedures = new MultiSelectList(APIClient.GetRequest<List<ProcedureViewModel>>($"api/visit/GetProcedureList"),
+                "Id", "ProcedureName", "Price");
+            return View(new VisitViewModel());
+        }
+
+        [HttpPost]
+        public void VisitCreate(DateTime datepicker, [Bind("ProceduresId", "ProcedureName")] PurchaseViewModel model)
+        {
+            List<ProcedureViewModel> procedures = model.ProceduresId.
+                Select(rec => APIClient.GetRequest<ProcedureViewModel>($"api/visit/GetProcedure?procedureId={rec}")).ToList();
+            if (datepicker != DateTime.MinValue && procedures != null)
+            {
+                APIClient.PostRequest("api/visit/CreateOrUpdateVisit", new VisitBindingModel
+                {
+                    Date = datepicker,
+                    VisitProcedures = procedures.ToDictionary(rec => rec.Id, rec => rec.ProcedureName),
+                    ClientId = Program.Client.Id
+                });
+                Response.Redirect("Visit");
+                return;
+            }
+        }
+        [HttpGet]
+        public IActionResult VisitUpdate(int visitId)
+        {
+            ViewBag.Visit = APIClient.GetRequest<VisitViewModel>($"api/visit/GetVisit?visitId={visitId}");
+            ViewBag.Procedures = APIClient.GetRequest<List<ProcedureViewModel>>("api/visit/GetProcedureList");
+            var visit = APIClient.GetRequest<VisitViewModel>($"api/visit/GetVisit?visitId={visitId}");
+            return View(visit);
+        }
+
+        [HttpPost]
+        public void VisitUpdate(int visitId, DateTime datepicker, List<int> proceduresId)
+        {
+            if (datepicker != DateTime.MinValue && proceduresId != null)
+            {
+                var visit = APIClient.GetRequest<VisitViewModel>($"api/visit/GetVisit?visitId={visitId}");
+                if (visit == null)
+                {
+                    return;
+                }
+                List<ProcedureViewModel> procedures = new List<ProcedureViewModel>();
+                foreach (var procedureId in proceduresId)
+                {
+                    procedures.Add(APIClient.GetRequest<ProcedureViewModel>($"api/visit/GetProcedure?procedureId={procedureId}"));
+                }
+                APIClient.PostRequest("api/visit/CreateOrUpdateVisit", new VisitBindingModel
+                {
+                    Id = visit.Id,
+                    Date = datepicker,
+                    VisitProcedures = procedures.ToDictionary(rec => rec.Id, rec => rec.ProcedureName),
+                    ClientId = Program.Client.Id
+                });
+                Response.Redirect("Visit");
+                return;
+            }
+            throw new Exception("Введите дату и выберите процедуры");
+
+        }
+        [HttpGet]
+        public void VisitDelete(int visitId)
+        {
+            var visit = APIClient.GetRequest<VisitViewModel>($"api/visit/GetVisit?visitId={visitId}");
+            APIClient.PostRequest("api/visit/DeleteVisit", visit);
+            Response.Redirect("Visit");
+        }
+
+        // --------------RECEIPT-----------------
+
+        [HttpGet]
+        public IActionResult AddReceiptPurchases()
+        {
+            if (Program.Client == null)
+            {
+                return Redirect("~/Home/Enter");
+            }
+            ViewBag.Receipts = APIClient.GetRequest<List<ReceiptViewModel>>("api/receipt/GetReceiptList");
+            ViewBag.Purchases = APIClient.GetRequest<List<PurchaseViewModel>>($"api/client/GetClientPurchaseList?clientId={Program.Client.Id}");
             return View();
         }
 
-        public void CreatePurchase(DateTime datepicker, int price, List<int> procedureId)
+        [HttpPost]
+        public void AddReceiptPurchases(int receiptId, List<int> purchasesId)
         {
-            List<ProcedureViewModel> procedures = new List<ProcedureViewModel>();
-            foreach (var procId in procedureId)
+            if (receiptId != 0 && purchasesId != null)
             {
-                procedures.Add(APIClient.GetRequest<ProcedureViewModel>($"api/client/GetProcedure?procedureId={procId}"));
-            }
-            if (datepicker != DateTime.MinValue && price!=0 && procedures != null)
-            {
-                APIClient.PostRequest("api/client/CreateOrUpdateClient", new ClientBindingModel
+                APIClient.PostRequest("api/receipt/AddReceiptPurchases", new AddPurchasesBindingModel
                 {
-                    //ClientFIO = clientFIO,
-                    //PassportData = passport,
-                    //TelephoneNumber = telephone,
-                    //DateVisit = DateTime.Now,
-                    //ClientLoanPrograms = procedures.ToDictionary(x => x.Id, x => x.LoanProgramName),
-                    //ClerkId = Program.Clerk.Id
+                    ReceiptId = receiptId,
+                    PurchasesId = purchasesId
                 });
-                Response.Redirect("Client");
+                Response.Redirect("Purchase");
                 return;
             }
-            throw new Exception("Введите ФИО, паспортные данные и номер телефона");
+            throw new Exception("Выберите вклад и клиентов");
         }
     }
 

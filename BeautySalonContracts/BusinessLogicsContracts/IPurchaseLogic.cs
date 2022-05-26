@@ -9,6 +9,5 @@ namespace BeautySalonContracts.BusinessLogicsContracts
         List<PurchaseViewModel> Read(PurchaseBindingModel model);
         void CreateOrUpdate(PurchaseBindingModel model);
         void Delete(PurchaseBindingModel model);
-        void Linking(PurchaseLinkingBindingModel model);
     }
 }

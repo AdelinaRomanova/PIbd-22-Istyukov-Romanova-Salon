@@ -10,9 +10,11 @@ namespace BeautySalonBusinessLogic.BusinessLogics
     public class ReceiptLogic : IReceiptLogic
     {
         private readonly IReceiptStorage _receiptStorage;
-        public ReceiptLogic(IReceiptStorage receiptStorage)
+        private readonly IPurchaseStorage _purchaseStorage;
+        public ReceiptLogic(IReceiptStorage receiptStorage, IPurchaseStorage purchaseStorage)
         {
             _receiptStorage = receiptStorage;
+            _purchaseStorage = purchaseStorage;
         }
         public List<ReceiptViewModel> Read(ReceiptBindingModel model)
         {
@@ -50,6 +52,45 @@ namespace BeautySalonBusinessLogic.BusinessLogics
                 throw new Exception("Чек не найден");
             }
             _receiptStorage.Delete(model);
+        }
+
+        public void AddPurchases(AddPurchasesBindingModel model)
+        {
+            var receipt = _receiptStorage.GetElement(new ReceiptBindingModel
+            {
+                Id = model.ReceiptId
+            });
+
+            if (receipt == null)
+            {
+                throw new Exception("Вклад не найден");
+            }
+
+            receipt.ReceiptPurchases.Clear();
+
+            foreach (var purchaseId in model.PurchasesId)
+            {
+                var purchase = _purchaseStorage.GetElement(new PurchaseBindingModel
+                {
+                    Id = purchaseId
+                });
+
+                if (purchase == null)
+                {
+                    throw new Exception("Покупка не найдена");
+                }
+
+                receipt.ReceiptPurchases.Add(purchaseId, purchase.Price);
+            }
+            _receiptStorage.Update(new ReceiptBindingModel
+            {
+                Id = receipt.Id,
+                Date = receipt.Date,
+                TotalCost = receipt.TotalCost,
+                ReceiptCosmetics = receipt.ReceiptCosmetics,
+                EmployeeId = receipt.EmployeeId,
+                ReceiptPurchases = receipt.ReceiptPurchases
+            });
         }
     }
 }
