@@ -11,13 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeautySalonContracts", "Bea
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeautySalonDatabaseImplement", "BeautySalonDatabaseImplement\BeautySalonDatabaseImplement.csproj", "{35F051AF-6597-49BA-B076-B6A6FDA9CBDF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeautySalonViewEmployeeeeeeeee", "BeautySalonViewEmployee\BeautySalonViewEmployeeeeeeeee.csproj", "{10CB37F7-DF34-4899-9282-B47BC1B40E87}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeautySalonRestApi", "BeautySalonRestApi\BeautySalonRestApi.csproj", "{2EEC0E5C-B1C5-4E5E-B1E2-A9792B1B36E2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeautySalonClientApp", "BeautySalonClientApp\BeautySalonClientApp.csproj", "{5724F8C5-EE00-45E8-B938-B8ADAB4A3A31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalonViewEmployee", "BeautySalonViewEmployee\BeautySalonViewEmployee.csproj", "{6E5F1916-5C38-4468-8358-1260E60FE673}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalonViewEmployeee", "BeautySalonViewEmployee\BeautySalonViewEmployeee.csproj", "{6E5F1916-5C38-4468-8358-1260E60FE673}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeautySalonViewEmployee", "BeautySalonViewEmployee\BeautySalonViewEmployee.csproj", "{287AB6C5-775E-45AD-962B-293338AD341C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,6 @@ Global
 		{35F051AF-6597-49BA-B076-B6A6FDA9CBDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35F051AF-6597-49BA-B076-B6A6FDA9CBDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35F051AF-6597-49BA-B076-B6A6FDA9CBDF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{10CB37F7-DF34-4899-9282-B47BC1B40E87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10CB37F7-DF34-4899-9282-B47BC1B40E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10CB37F7-DF34-4899-9282-B47BC1B40E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10CB37F7-DF34-4899-9282-B47BC1B40E87}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2EEC0E5C-B1C5-4E5E-B1E2-A9792B1B36E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2EEC0E5C-B1C5-4E5E-B1E2-A9792B1B36E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EEC0E5C-B1C5-4E5E-B1E2-A9792B1B36E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,6 +53,10 @@ Global
 		{6E5F1916-5C38-4468-8358-1260E60FE673}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E5F1916-5C38-4468-8358-1260E60FE673}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E5F1916-5C38-4468-8358-1260E60FE673}.Release|Any CPU.Build.0 = Release|Any CPU
+		{287AB6C5-775E-45AD-962B-293338AD341C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{287AB6C5-775E-45AD-962B-293338AD341C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{287AB6C5-775E-45AD-962B-293338AD341C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{287AB6C5-775E-45AD-962B-293338AD341C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

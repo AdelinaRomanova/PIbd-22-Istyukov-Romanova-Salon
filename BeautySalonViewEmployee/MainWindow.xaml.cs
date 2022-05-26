@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace BeautySalonViewEmployee
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -24,5 +24,41 @@ namespace BeautySalonViewEmployee
         {
             InitializeComponent();
         }
+
+        private void CosmeticMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            //var window = Container.Resolve<WindowCosmetics>();
+            //window.Id = (int)id;
+            //window.ShowDialog();
+        }
+
+        private void ReceiptMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            //var window = Container.Resolve<WindowReceipts>();
+            //window.Id = (int)id;
+            //window.ShowDialog();
+        }
+
+        private void DistributionMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            //var window = Container.Resolve<WindowDistributions>();
+            //window.Id = (int)id;
+            //window.ShowDialog();
+        }
+
+        private void PurchaseMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            //var window = Container.Resolve<WindowPurchaseList>();
+            //window.Id = (int)id;
+            //window.ShowDialog();
+        }
+
+        private void ReportMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            //var window = Container.Resolve<WindowReportCosmetics>();
+            //window.Id = (int)id;
+            //window.ShowDialog();
+        }
+
     }
 }

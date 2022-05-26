@@ -40,6 +40,7 @@
                 <MenuItem x:Name="DistributionMenuItem" Header="Выдачи" Template="{StaticResource VsMenuTop}" Click="DistributionMenuItem_Click"/>
                 <MenuItem x:Name="PurchaseListMenuItem" Header="Список покупок" Template="{StaticResource VsMenuTop}" Click="PurchaseMenuItem_Click"/>
                 <MenuItem x:Name="ReportMenuItem" Header="Отчет по косметике" Template="{StaticResource VsMenuTop}" Click="ReportMenuItem_Click"/>
+                <MenuItem x:Name="StatisticMenuItem" Header="Статистика" Template="{StaticResource VsMenuTop}" Click="StatisticMenuItem_Click"/>
             </Menu>
         </StackPanel>
         <Image Grid.Row="1" Grid.RowSpan="3" MaxHeight="400" MaxWidth="400" Source="/logo.png"/>
