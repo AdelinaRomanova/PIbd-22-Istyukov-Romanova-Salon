@@ -6,23 +6,21 @@ namespace BeautySalonContracts.BusinessLogicsContracts
 {
     public interface IReportClientLogic
     {
-		// Получение списка процедур за определенный период 
-		List<ReportProceduresViewModel> GetProcedures(ReportClientBindingModel model);
-
-
 		// Получение списка выдач по выбранным процедурам 
 		List<ReportDistributionProcedureViewModel> GetDistributionList(ReportDistributionProcedureBindingModel model);
 
+		// Получение списка процедур за определенный период 
+		List<ReportProceduresViewModel> GetProcedures(ReportClientBindingModel model);
 
 		// Сохранение списка выдач в файл-Word
-		public void SavePurchaseListToWordFile(ReportClientBindingModel model);
+		public void SaveProcedureDistributionsToWordFile(ReportClientBindingModel model);
 
 
 		// Сохранение списка выдач в файл-Excel
-		public void SavePurchaseListToExcelFile(ReportClientBindingModel model);
+		public void SaveProcedureDistributionsToExcelFile(ReportClientBindingModel model);
 
 
 		// Сохранение списка процедур в файл-Pdf
-		public void SaveProceduresToPdfFile(ReportClientBindingModel model);
+		public void SaveProcedureToPdfFile(ReportClientBindingModel model);
 	}
 }
