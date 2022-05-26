@@ -12,6 +12,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Unity" Version="5.11.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BeautySalonContracts\BeautySalonContracts.csproj" />
+    <ProjectReference Include="..\BeautySalonDatabaseImplement\BeautySalonDatabaseImplement.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="logo.png" />
   </ItemGroup>
 
