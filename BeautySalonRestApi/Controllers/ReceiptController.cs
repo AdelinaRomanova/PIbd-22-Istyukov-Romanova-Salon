@@ -30,7 +30,7 @@ namespace BeautySalonRestApi.Controllers
         [HttpPost]
         public void DeleteReceipt(ReceiptBindingModel model) => _receiptLogic.Delete(model);
 
-        [HttpPost]
-        public void AddReceiptPurchases(AddPurchasesBindingModel model) => _receiptLogic.AddPurchases(model);
+        //[HttpPost]
+        //public void AddReceiptPurchase(AddPurchasesBindingModel model) => _receiptLogic.AddClients(model);
     }
 }

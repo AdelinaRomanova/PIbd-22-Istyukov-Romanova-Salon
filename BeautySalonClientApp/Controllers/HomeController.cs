@@ -367,14 +367,14 @@ namespace BeautySalonClientApp.Controllers
         }
 
         [HttpPost]
-        public void AddReceiptPurchases(int receiptId, List<int> purchasesId)
+        public void AddReceiptPurchases(int receiptId, int purchaseId)
         {
-            if (receiptId != 0 && purchasesId != null)
+            if (receiptId != 0 && purchaseId != 0)
             {
-                APIClient.PostRequest("api/receipt/AddReceiptPurchases", new AddPurchasesBindingModel
+                APIClient.PostRequest("api/purchase/AddReceiptPurchases", new AddPurchasesBindingModel
                 {
                     ReceiptId = receiptId,
-                    PurchasesId = purchasesId
+                    PurchaseId = purchaseId
                 });
                 Response.Redirect("Purchase");
                 return;

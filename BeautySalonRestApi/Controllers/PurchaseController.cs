@@ -36,5 +36,8 @@ namespace BeautySalonRestApi.Controllers
 
         [HttpPost]
         public void DeletePurchase(PurchaseBindingModel model) => _purchaseLogic.Delete(model);
+
+        [HttpPost]
+        public void AddReceiptPurchase(AddPurchasesBindingModel model) => _purchaseLogic.AddPurcheses(model);
     }
 }

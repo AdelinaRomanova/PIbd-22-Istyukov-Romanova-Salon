@@ -54,43 +54,43 @@ namespace BeautySalonBusinessLogic.BusinessLogics
             _receiptStorage.Delete(model);
         }
 
-        public void AddPurchases(AddPurchasesBindingModel model)
-        {
-            var receipt = _receiptStorage.GetElement(new ReceiptBindingModel
-            {
-                Id = model.ReceiptId
-            });
+        //public void AddPurchases(AddPurchasesBindingModel model)
+        //{
+        //    var receipt = _receiptStorage.GetElement(new ReceiptBindingModel
+        //    {
+        //        Id = model.ReceiptId
+        //    });
 
-            if (receipt == null)
-            {
-                throw new Exception("Вклад не найден");
-            }
+        //    if (receipt == null)
+        //    {
+        //        throw new Exception("Вклад не найден");
+        //    }
 
-            receipt.ReceiptPurchases.Clear();
+        //    receipt.ReceiptPurchases.Clear();
 
-            foreach (var purchaseId in model.PurchasesId)
-            {
-                var purchase = _purchaseStorage.GetElement(new PurchaseBindingModel
-                {
-                    Id = purchaseId
-                });
+        //    foreach (var purchaseId in model.PurchasesId)
+        //    {
+        //        var purchase = _purchaseStorage.GetElement(new PurchaseBindingModel
+        //        {
+        //            Id = purchaseId
+        //        });
 
-                if (purchase == null)
-                {
-                    throw new Exception("Покупка не найдена");
-                }
+        //        if (purchase == null)
+        //        {
+        //            throw new Exception("Покупка не найдена");
+        //        }
 
-                receipt.ReceiptPurchases.Add(purchaseId, purchase.Price);
-            }
-            _receiptStorage.Update(new ReceiptBindingModel
-            {
-                Id = receipt.Id,
-                Date = receipt.Date,
-                TotalCost = receipt.TotalCost,
-                ReceiptCosmetics = receipt.ReceiptCosmetics,
-                EmployeeId = receipt.EmployeeId,
-                ReceiptPurchases = receipt.ReceiptPurchases
-            });
-        }
+        //        receipt.ReceiptPurchases.Add(purchaseId, purchase.Price);
+        //    }
+        //    _receiptStorage.Update(new ReceiptBindingModel
+        //    {
+        //        Id = receipt.Id,
+        //        Date = receipt.Date,
+        //        TotalCost = receipt.TotalCost,
+        //        ReceiptCosmetics = receipt.ReceiptCosmetics,
+        //        EmployeeId = receipt.EmployeeId,
+        //        ReceiptPurchases = receipt.ReceiptPurchases
+        //    });
+        //}
     }
 }
