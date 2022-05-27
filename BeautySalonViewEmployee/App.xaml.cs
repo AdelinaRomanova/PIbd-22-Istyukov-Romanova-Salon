@@ -54,14 +54,19 @@ namespace BeautySalonViewEmployee
             currentContainer.RegisterType<IReceiptStorage, ReceiptStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IVisitStorage, VisitStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IPurchaseStorage, PurchaseStorage>(new HierarchicalLifetimeManager());
-            //currentContainer.RegisterType<IReportStorage, ReportStorage>(new HierarchicalLifetimeManager());
+            //currentContainer.RegisterType<IMessageInfoStorage, MessageInfoStorage>(new HierarchicalLifetimeManager());
 
             currentContainer.RegisterType<ICosmeticLogic, CosmeticLogic >(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IDistributionLogic, DistributionLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IEmployeeLogic, EmployeeLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IReceiptLogic, ReceiptLogic>(new HierarchicalLifetimeManager());
-            //currentContainer.RegisterType<ReportLogicEmployee>(new HierarchicalLifetimeManager());
-            //currentContainer.RegisterType<MailLogic>(new HierarchicalLifetimeManager());
+            //currentContainer.RegisterType<IMessageInfoLogic, MessageInfoLogic>(new HierarchicalLifetimeManager());
+
+            //currentContainer.RegisterType<AbstractSaveToExcel, SaveToExcel>(new HierarchicalLifetimeManager());
+            //currentContainer.RegisterType<AbstractSaveToPdf, SaveToPdf>(new HierarchicalLifetimeManager());
+            //currentContainer.RegisterType<AbstractSaveToWord, SaveToWord>(new HierarchicalLifetimeManager());
+            //currentContainer.RegisterType<AbstractMailWorker, MailKitWorker>(new SingletonLifetimeManager());
+
             return currentContainer;
         }
     }
