@@ -15,9 +15,6 @@ namespace BeautySalonViewEmployee
     /// </summary>
     public partial class WindowDistributions : Window
     {
-        [Dependency]
-        public IUnityContainer Container { get; set; }
-
         public int Id { set { id = value; } }
 
         private int? id;
@@ -56,7 +53,7 @@ namespace BeautySalonViewEmployee
 
         private void buttonAdd_Click(object sender, RoutedEventArgs e)
         {
-            var window = Container.Resolve<WindowDistribution>();
+            var window = App.Container.Resolve<WindowDistribution>();
             window.EmployeeId = (int)id;
             if (window.ShowDialog().Value)
             {
@@ -68,7 +65,7 @@ namespace BeautySalonViewEmployee
         {
             if (dataGrid.SelectedCells.Count != 0)
             {
-                var window = Container.Resolve<WindowDistribution>();
+                var window = App.Container.Resolve<WindowDistribution>();
                 window.Id = ((DistributionViewModel)dataGrid.SelectedCells[0].Item).Id;
                 window.EmployeeId = (int)id;
                 if (window.ShowDialog().Value)
@@ -107,7 +104,7 @@ namespace BeautySalonViewEmployee
         {
             if (dataGrid.SelectedCells.Count != 0)
             {
-                var window = Container.Resolve<WindowLinkingDistribution>();
+                var window = App.Container.Resolve<WindowLinkingDistribution>();
                 window.EmployeeId = (int)id;
                 window.DistributionId = ((DistributionViewModel)dataGrid.SelectedCells[0].Item).Id;
                 if (window.ShowDialog().Value)

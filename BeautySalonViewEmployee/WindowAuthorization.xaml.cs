@@ -11,9 +11,6 @@ namespace BeautySalonViewEmployee
     /// </summary>
     public partial class WindowAuthorization : Window
     {
-        [Dependency]
-        public IUnityContainer Container { get; set; }
-
         private readonly IEmployeeLogic _logic;
 
         public WindowAuthorization(IEmployeeLogic logic)
@@ -44,7 +41,7 @@ namespace BeautySalonViewEmployee
                 if (list.Count > 0 && list != null)
                 {
                     DialogResult = true;
-                    var window = Container.Resolve<MainWindow>();
+                    var window = App.Container.Resolve<MainWindow>();
                     window.Id = list[0].Id;
                     window.ShowDialog();
                 }

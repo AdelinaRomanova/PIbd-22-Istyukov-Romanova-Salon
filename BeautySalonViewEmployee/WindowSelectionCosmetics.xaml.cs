@@ -12,9 +12,6 @@ namespace BeautySalonViewEmployee
     /// </summary>
     public partial class WindowSelectionCosmetics : Window
     {
-        [Dependency]
-        public IUnityContainer Container { get; set; }
-
         public int Id { get { return (int)(ComboBoxCosmeticName.SelectedItem as CosmeticViewModel).Id; } set { id = value; } }
 
         public string CosmeticName { get { return (ComboBoxCosmeticName.SelectedItem as CosmeticViewModel).CosmeticName; } }

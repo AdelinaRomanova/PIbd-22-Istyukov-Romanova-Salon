@@ -18,9 +18,6 @@ namespace BeautySalonViewEmployee
     /// </summary>
     public partial class WindowReportCosmetics : Window
     {
-        [Dependency]
-        public IUnityContainer Container { get; set; }
-
         private readonly IReportEmployeeLogic _logic;
 
         private readonly IEmployeeStorage _employeeStorage;

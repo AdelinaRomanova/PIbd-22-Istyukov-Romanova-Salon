@@ -11,9 +11,6 @@ namespace BeautySalonViewEmployee
     /// </summary>
     public partial class WindowRegistration : Window
     {
-        [Dependency]
-        public IUnityContainer Container { get; set; }
-
         public int Id { set { id = value; } }
 
         private readonly IEmployeeLogic _logic;

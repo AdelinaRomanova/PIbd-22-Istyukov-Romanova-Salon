@@ -11,9 +11,6 @@ namespace BeautySalonViewEmployee
     /// </summary>
     public partial class MainWindow : Window
     {
-        [Dependency]
-        public IUnityContainer Container { get; set; }
-
         public int Id { set { id = value; } }
 
         private int? id;
@@ -38,36 +35,36 @@ namespace BeautySalonViewEmployee
 
         private void CosmeticMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var window = Container.Resolve<WindowCosmetics>();
-            //window.Id = (int)id;
+            var window = App.Container.Resolve<WindowCosmetics>();
+            window.Id = (int)id;
             window.ShowDialog();
         }
 
         private void ReceiptMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var window = Container.Resolve<WindowReceipts>();
-            //window.Id = (int)id;
+            var window = App.Container.Resolve<WindowReceipts>();
+            window.Id = (int)id;
             window.ShowDialog();
         }
 
         private void DistributionMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var window = Container.Resolve<WindowDistributions>();
-            //window.Id = (int)id;
+            var window = App.Container.Resolve<WindowDistributions>();
+            window.Id = (int)id;
             window.ShowDialog();
         }
 
         private void PurchaseMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var window = Container.Resolve<WindowPurchaseList>();
-            //window.Id = (int)id;
+            var window = App.Container.Resolve<WindowPurchaseList>();
+            window.Id = (int)id;
             window.ShowDialog();
         }
 
         private void ReportMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var window = Container.Resolve<WindowReportCosmetics>();
-            //window.Id = (int)id;
+            var window = App.Container.Resolve<WindowReportCosmetics>();
+            window.Id = (int)id;
             window.ShowDialog();
         }
     }

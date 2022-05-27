@@ -16,9 +16,6 @@ namespace BeautySalonViewEmployee
     /// </summary>
     public partial class WindowReceipt : Window
     {
-        [Dependency]
-        public IUnityContainer Container { get; set; }
-
         public int Id { set { id = value; } }
 
         public int EmployeeId { set { employeeId = value; } }
@@ -97,7 +94,7 @@ namespace BeautySalonViewEmployee
 
         private void buttonAdd_Click(object sender, RoutedEventArgs e)
         {
-            var window = Container.Resolve<WindowSelectionCosmetics>();
+            var window = App.Container.Resolve<WindowSelectionCosmetics>();
             window.EmployeeId = (int)employeeId;
             if (window.ShowDialog().Value)
             {
@@ -135,7 +132,7 @@ namespace BeautySalonViewEmployee
         {
             if (dataGrid.SelectedCells.Count != 0)
             {
-                var window = Container.Resolve<WindowSelectionCosmetics>();
+                var window = App.Container.Resolve<WindowSelectionCosmetics>();
                 window.Id = ((DataGridReceiptItemViewModel)dataGrid.SelectedCells[0].Item).Id;
                 window.Count = ((DataGridReceiptItemViewModel)dataGrid.SelectedCells[0].Item).Count;
                 window.EmployeeId = (int)employeeId;

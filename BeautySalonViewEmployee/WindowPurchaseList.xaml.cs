@@ -17,9 +17,6 @@ namespace BeautySalonViewEmployee
     /// </summary>
     public partial class WindowPurchaseList : Window
     {
-        [Dependency]
-        public IUnityContainer Container { get; set; }
-
         private readonly IReportEmployeeLogic _report;
 
         public int Id { set { id = value; } }
@@ -109,7 +106,7 @@ namespace BeautySalonViewEmployee
 
         private void buttonAdd_Click(object sender, RoutedEventArgs e)
         {
-            var window = Container.Resolve<WindowSelectionCosmeticsForPurchaseList>();
+            var window = App.Container.Resolve<WindowSelectionCosmeticsForPurchaseList>();
             window.EmployeeId = (int)id;
             if (window.ShowDialog().Value)
             {
@@ -129,7 +126,7 @@ namespace BeautySalonViewEmployee
         {
             if (dataGrid.SelectedCells.Count != 0)
             {
-                var window = Container.Resolve<WindowSelectionCosmeticsForPurchaseList>();
+                var window = App.Container.Resolve<WindowSelectionCosmeticsForPurchaseList>();
                 window.Id = ((DataGridPurchaseListItemViewModel)dataGrid.SelectedCells[0].Item).Id;
                 window.EmployeeId = (int)id;
                 if (window.ShowDialog().Value)

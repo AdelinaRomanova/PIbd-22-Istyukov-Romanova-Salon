@@ -12,9 +12,6 @@ namespace BeautySalonViewEmployee
     /// </summary>
     public partial class WindowLinkingDistribution : Window
     {
-        [Dependency]
-        public IUnityContainer Container { get; set; }
-
         public int VisitId { get { return (int)(ComboBoxVisit.SelectedItem as VisitViewModel).Id; } }
 
         public int DistributionId { get { return (ComboBoxDistribution.SelectedItem as DistributionViewModel).Id; } set { distributionId = value; } }

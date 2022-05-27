@@ -15,9 +15,6 @@ namespace BeautySalonViewEmployee
     /// </summary>
     public partial class WindowCosmetics : Window
     {
-        [Dependency]
-        public IUnityContainer Container { get; set; }
-
         public int Id { set { id = value; } }
 
         private int? id;
@@ -55,7 +52,7 @@ namespace BeautySalonViewEmployee
 
         private void buttonAdd_Click(object sender, RoutedEventArgs e)
         {
-            var window = Container.Resolve<WindowCosmetic>();
+            var window = App.Container.Resolve<WindowCosmetic>();
             window.EmployeeId = (int)id;
             if (window.ShowDialog().Value)
             {
@@ -67,7 +64,7 @@ namespace BeautySalonViewEmployee
         {
             if (dataGrid.SelectedCells.Count != 0)
             {
-                var window = Container.Resolve<WindowCosmetic>();
+                var window = App.Container.Resolve<WindowCosmetic>();
                 window.Id = (int)((CosmeticViewModel)dataGrid.SelectedCells[0].Item).Id;
                 window.EmployeeId = (int)id;
                 if (window.ShowDialog().Value)

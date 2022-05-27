@@ -11,9 +11,6 @@ namespace BeautySalonViewEmployee
     /// </summary>
     public partial class WindowCosmetic : Window
     {
-        [Dependency]
-        public IUnityContainer Container { get; set; }
-
         public int Id { set { id = value; } }
 
         public int EmployeeId { set { employeeId = value; } }
