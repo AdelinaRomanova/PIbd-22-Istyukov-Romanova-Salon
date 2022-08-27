@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace BeautySalonBusinessLogic.BusinessLogics
 {
-    class ReportEmployeeLogic : IReportEmployeeLogic
+    public class ReportEmployeeLogic : IReportEmployeeLogic
     {
         private readonly IReceiptStorage _receiptStorage;
         private readonly IPurchaseStorage _purchaseStorage;

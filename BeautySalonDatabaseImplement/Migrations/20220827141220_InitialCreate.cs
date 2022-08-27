@@ -136,7 +136,7 @@ namespace BeautySalonDatabaseImplement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
-                    VisitId = table.Column<int>(type: "int", nullable: false),
+                    VisitId = table.Column<int>(type: "int", nullable: true),
                     IssueDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -153,7 +153,7 @@ namespace BeautySalonDatabaseImplement.Migrations
                         column: x => x.VisitId,
                         principalTable: "Visits",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -179,7 +179,7 @@ namespace BeautySalonDatabaseImplement.Migrations
                         column: x => x.VisitId,
                         principalTable: "Visits",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -261,7 +261,7 @@ namespace BeautySalonDatabaseImplement.Migrations
                         column: x => x.DistributionId,
                         principalTable: "Distributions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -287,7 +287,7 @@ namespace BeautySalonDatabaseImplement.Migrations
                         column: x => x.PurchaseId,
                         principalTable: "Purchases",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(

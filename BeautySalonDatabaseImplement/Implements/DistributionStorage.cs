@@ -68,8 +68,15 @@ namespace BeautySalonDatabaseImplement.Implements
                 {
                     try
                     {
-                        context.Distributions.Add(CreateModel(model, new Distribution(), context));
+                        Distribution distribution = new Distribution()
+                        {
+                            IssueDate = model.IssueDate,
+                            EmployeeId = (int)model.EmployeeId,
+                            VisitId = model.VisitId
+                        };
+                        context.Distributions.Add(distribution);
                         context.SaveChanges();
+                        CreateModel(model, distribution, context);
                         transaction.Commit();
                     }
                     catch

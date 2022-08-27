@@ -16,7 +16,7 @@ namespace BeautySalonViewEmployee
         public WindowAuthorization(IEmployeeLogic logic)
         {
             InitializeComponent();
-            this._logic = logic;
+            _logic = logic;
         }
 
         private void buttonEnter_Click(object sender, RoutedEventArgs e)

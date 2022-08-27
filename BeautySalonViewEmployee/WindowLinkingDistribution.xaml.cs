@@ -2,7 +2,11 @@
 using BeautySalonContracts.BusinessLogicsContracts;
 using BeautySalonContracts.ViewModels;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 using Unity;
 
 namespace BeautySalonViewEmployee
@@ -29,21 +33,21 @@ namespace BeautySalonViewEmployee
         public WindowLinkingDistribution(IVisitLogic logicVisit, IDistributionLogic logicDistribution)
         {
             InitializeComponent();
-            this._logicDistribution = logicDistribution;
-            this._logicVisit = logicVisit;
+            _logicDistribution = logicDistribution;
+            _logicVisit = logicVisit;
         }
 
         private void WindowLinkingDistribution_Loaded(object sender, RoutedEventArgs e)
         {
-            var listVisit = _logicVisit.Read(null);
-            if (listVisit != null)
-            {
-                ComboBoxVisit.ItemsSource = listVisit;
-            }
             var listDistribution = _logicDistribution.Read(new DistributionBindingModel { EmployeeId = employeeId });
             if (listDistribution != null)
             {
                 ComboBoxDistribution.ItemsSource = listDistribution;
+            }
+            var listVisit = _logicVisit.Read(null);
+            if (listVisit != null)
+            {
+                ComboBoxVisit.ItemsSource = listVisit;
             }
             if (distributionId != null)
             {

@@ -60,6 +60,9 @@ namespace BeautySalonViewEmployee
             currentContainer.RegisterType<IDistributionLogic, DistributionLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IEmployeeLogic, EmployeeLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IReceiptLogic, ReceiptLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IVisitLogic, VisitLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IPurchaseLogic, PurchaseLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IReportEmployeeLogic, ReportEmployeeLogic>(new HierarchicalLifetimeManager());
             //currentContainer.RegisterType<IMessageInfoLogic, MessageInfoLogic>(new HierarchicalLifetimeManager());
 
             //currentContainer.RegisterType<AbstractSaveToExcel, SaveToExcel>(new HierarchicalLifetimeManager());

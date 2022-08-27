@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BeautySalonDatabaseImplement.Migrations
 {
     [DbContext(typeof(BeautySalonDatabase))]
-    [Migration("20220827133701_InitialCreate")]
+    [Migration("20220827141220_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -91,7 +91,7 @@ namespace BeautySalonDatabaseImplement.Migrations
                     b.Property<DateTime>("IssueDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("VisitId")
+                    b.Property<int?>("VisitId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -379,9 +379,7 @@ namespace BeautySalonDatabaseImplement.Migrations
 
                     b.HasOne("BeautySalonDatabaseImplement.Models.Visit", "Visit")
                         .WithMany("Distributions")
-                        .HasForeignKey("VisitId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("VisitId");
 
                     b.Navigation("Employee");
 

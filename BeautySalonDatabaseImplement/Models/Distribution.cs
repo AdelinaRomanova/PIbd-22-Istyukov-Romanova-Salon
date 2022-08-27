@@ -9,7 +9,7 @@ namespace BeautySalonDatabaseImplement.Models
     {
         public int Id { get; set; }
         public int EmployeeId { get; set; }
-        public int VisitId { get; set; }
+        public int? VisitId { get; set; }
         
         [Required]
         public DateTime IssueDate { get; set; }
