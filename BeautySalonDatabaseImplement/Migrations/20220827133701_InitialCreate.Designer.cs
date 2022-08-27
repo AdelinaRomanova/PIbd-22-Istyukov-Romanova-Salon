@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BeautySalonDatabaseImplement.Migrations
 {
     [DbContext(typeof(BeautySalonDatabase))]
-    [Migration("20220524181054_InitialCreate43")]
-    partial class InitialCreate43
+    [Migration("20220827133701_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -268,6 +268,28 @@ namespace BeautySalonDatabaseImplement.Migrations
                     b.ToTable("Purchases");
                 });
 
+            modelBuilder.Entity("BeautySalonDatabaseImplement.Models.PurchaseReceipt", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("PurchaseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReceiptId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PurchaseId");
+
+                    b.HasIndex("ReceiptId");
+
+                    b.ToTable("PurchaseReceipts");
+                });
+
             modelBuilder.Entity("BeautySalonDatabaseImplement.Models.Receipt", b =>
                 {
                     b.Property<int>("Id")
@@ -451,6 +473,25 @@ namespace BeautySalonDatabaseImplement.Migrations
                     b.Navigation("Receipt");
                 });
 
+            modelBuilder.Entity("BeautySalonDatabaseImplement.Models.PurchaseReceipt", b =>
+                {
+                    b.HasOne("BeautySalonDatabaseImplement.Models.Purchase", "Purchase")
+                        .WithMany("PurchaseReceipts")
+                        .HasForeignKey("PurchaseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BeautySalonDatabaseImplement.Models.Receipt", "Receipt")
+                        .WithMany("ReceiptPurcheses")
+                        .HasForeignKey("ReceiptId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Purchase");
+
+                    b.Navigation("Receipt");
+                });
+
             modelBuilder.Entity("BeautySalonDatabaseImplement.Models.Receipt", b =>
                 {
                     b.HasOne("BeautySalonDatabaseImplement.Models.Employee", "Employee")
@@ -532,6 +573,8 @@ namespace BeautySalonDatabaseImplement.Migrations
             modelBuilder.Entity("BeautySalonDatabaseImplement.Models.Purchase", b =>
                 {
                     b.Navigation("ProcedurePurchase");
+
+                    b.Navigation("PurchaseReceipts");
                 });
 
             modelBuilder.Entity("BeautySalonDatabaseImplement.Models.Receipt", b =>
@@ -539,6 +582,8 @@ namespace BeautySalonDatabaseImplement.Migrations
                     b.Navigation("Purchases");
 
                     b.Navigation("ReceiptCosmetics");
+
+                    b.Navigation("ReceiptPurcheses");
                 });
 
             modelBuilder.Entity("BeautySalonDatabaseImplement.Models.Visit", b =>

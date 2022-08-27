@@ -125,7 +125,7 @@ namespace BeautySalonDatabaseImplement.Implements
         {
             distribution.IssueDate = model.IssueDate;
             distribution.EmployeeId = (int)model.EmployeeId;
-            distribution.VisitId = (int)model.VisitId;
+            distribution.VisitId = model.VisitId;
 
             if (distribution.Id == 0)
             {
@@ -164,7 +164,8 @@ namespace BeautySalonDatabaseImplement.Implements
             {
                 Id = distribution.Id,
                 IssueDate = distribution.IssueDate,
-                DistributionCosmetics = distribution.DistributionCosmetics.ToDictionary(recDC => recDC.CosmeticId, recDC => (recDC.Cosmetic?.CosmeticName, recDC.Count)),
+                DistributionCosmetics = distribution.DistributionCosmetics
+                    .ToDictionary(recDC => recDC.CosmeticId, recDC => (recDC.Cosmetic?.CosmeticName, recDC.Count)),
                 EmployeeId = distribution.EmployeeId,
                 VisitId = distribution.VisitId
             };

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BeautySalonDatabaseImplement.Migrations
 {
-    public partial class InitialCreate40 : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -173,7 +173,7 @@ namespace BeautySalonDatabaseImplement.Migrations
                         column: x => x.ProcedureId,
                         principalTable: "Procedures",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ProcedureVisits_Visits_VisitId",
                         column: x => x.VisitId,
@@ -189,8 +189,7 @@ namespace BeautySalonDatabaseImplement.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ClientId = table.Column<int>(type: "int", nullable: false),
-                    ReceiptId = table.Column<int>(type: "int", nullable: false),
-                    Count = table.Column<int>(type: "int", nullable: false),
+                    ReceiptId = table.Column<int>(type: "int", nullable: true),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -208,7 +207,7 @@ namespace BeautySalonDatabaseImplement.Migrations
                         column: x => x.ReceiptId,
                         principalTable: "Receipts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -235,7 +234,7 @@ namespace BeautySalonDatabaseImplement.Migrations
                         column: x => x.ReceiptId,
                         principalTable: "Receipts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -262,7 +261,7 @@ namespace BeautySalonDatabaseImplement.Migrations
                         column: x => x.DistributionId,
                         principalTable: "Distributions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -282,11 +281,37 @@ namespace BeautySalonDatabaseImplement.Migrations
                         column: x => x.ProcedureId,
                         principalTable: "Procedures",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ProcedurePurchases_Purchases_PurchaseId",
                         column: x => x.PurchaseId,
                         principalTable: "Purchases",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PurchaseReceipts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PurchaseId = table.Column<int>(type: "int", nullable: false),
+                    ReceiptId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PurchaseReceipts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PurchaseReceipts_Purchases_PurchaseId",
+                        column: x => x.PurchaseId,
+                        principalTable: "Purchases",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PurchaseReceipts_Receipts_ReceiptId",
+                        column: x => x.ReceiptId,
+                        principalTable: "Receipts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -342,6 +367,16 @@ namespace BeautySalonDatabaseImplement.Migrations
                 column: "VisitId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PurchaseReceipts_PurchaseId",
+                table: "PurchaseReceipts",
+                column: "PurchaseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PurchaseReceipts_ReceiptId",
+                table: "PurchaseReceipts",
+                column: "ReceiptId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Purchases_ClientId",
                 table: "Purchases",
                 column: "ClientId");
@@ -384,16 +419,19 @@ namespace BeautySalonDatabaseImplement.Migrations
                 name: "ProcedureVisits");
 
             migrationBuilder.DropTable(
+                name: "PurchaseReceipts");
+
+            migrationBuilder.DropTable(
                 name: "ReceiptCosmetics");
 
             migrationBuilder.DropTable(
                 name: "Distributions");
 
             migrationBuilder.DropTable(
-                name: "Purchases");
+                name: "Procedures");
 
             migrationBuilder.DropTable(
-                name: "Procedures");
+                name: "Purchases");
 
             migrationBuilder.DropTable(
                 name: "Cosmetics");

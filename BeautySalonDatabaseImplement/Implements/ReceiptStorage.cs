@@ -165,16 +165,6 @@ namespace BeautySalonDatabaseImplement.Implements
                 });
                 context.SaveChanges();
             }
-            // добавили новые
-            foreach (var rp in model.ReceiptPurchases)
-            {
-                context.PurchaseReceipts.Add(new PurchaseReceipt
-                {
-                    ReceiptId = receipt.Id,
-                    PurchaseId = rp.Key,
-                });
-                context.SaveChanges();
-            }
             return receipt;
         }
         private ReceiptViewModel CreateModel(Receipt receipt)
@@ -184,10 +174,11 @@ namespace BeautySalonDatabaseImplement.Implements
                 Id = receipt.Id,
                 TotalCost = receipt.TotalCost,
                 Date = receipt.Date,
-                ReceiptCosmetics = receipt.ReceiptCosmetics.ToDictionary(recRC => recRC.CosmeticId, recRC => (recRC.Cosmetic?.CosmeticName, recRC.Count)),
+                ReceiptCosmetics = receipt.ReceiptCosmetics
+                    .ToDictionary(recRC => recRC.CosmeticId, recRC => (recRC.Cosmetic?.CosmeticName, recRC.Count)),
                 EmployeeId = receipt.EmployeeId,
                 ReceiptPurchases = receipt.ReceiptPurcheses
-                .ToDictionary(recDC => recDC.PurchaseId, recDC => recDC.Purchase.Price)
+                    .ToDictionary(recDC => recDC.PurchaseId, recDC => recDC.Purchase.Price)
             };
         }
     }

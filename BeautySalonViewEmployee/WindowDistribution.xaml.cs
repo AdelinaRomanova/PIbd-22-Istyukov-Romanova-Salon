@@ -31,7 +31,7 @@ namespace BeautySalonViewEmployee
         public WindowDistribution(IDistributionLogic logic)
         {
             InitializeComponent();
-            this._logic = logic;
+            _logic = logic;
         }
 
         private void WindowDistribution_Loaded(object sender, RoutedEventArgs e)

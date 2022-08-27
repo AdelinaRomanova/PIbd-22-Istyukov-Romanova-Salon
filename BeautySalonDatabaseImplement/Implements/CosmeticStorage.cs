@@ -16,7 +16,14 @@ namespace BeautySalonDatabaseImplement.Implements
 			using var context = new BeautySalonDatabase();
 			return context.Cosmetics
 				.Include(rec => rec.Employee)
-				.Select(CreateModel).ToList();
+				.Select(rec => new CosmeticViewModel
+				{
+					Id = rec.Id,
+					CosmeticName = rec.CosmeticName,
+					Price = rec.Price,
+					EmployeeId = rec.EmployeeId
+				})
+				.ToList();
 		}
 		public List<CosmeticViewModel> GetFilteredList(CosmeticBindingModel model)
 		{
@@ -26,8 +33,16 @@ namespace BeautySalonDatabaseImplement.Implements
 			}
 			using var context = new BeautySalonDatabase();
 			return context.Cosmetics
-				.Include(rec => rec.Employee)
-				.Where(rec => rec.CosmeticName.Contains(model.CosmeticName)).Select(CreateModel).ToList();
+				 .Include(rec => rec.Employee)
+				.Where(rec => rec.EmployeeId == model.EmployeeId || rec.CosmeticName.Contains(model.CosmeticName))
+				.Select(rec => new CosmeticViewModel
+				{
+					Id = rec.Id,
+					CosmeticName = rec.CosmeticName,
+					Price = rec.Price,
+					EmployeeId = rec.EmployeeId
+				})
+				.ToList();
 		}
 		public CosmeticViewModel GetElement(CosmeticBindingModel model)
 		{
@@ -39,7 +54,15 @@ namespace BeautySalonDatabaseImplement.Implements
 			var cosmetic = context.Cosmetics
 				.Include(rec => rec.Employee)
 				.FirstOrDefault(rec => rec.CosmeticName == model.CosmeticName || rec.Id == model.Id);
-			return cosmetic != null ? CreateModel(cosmetic) : null;
+			return cosmetic != null ?
+				new CosmeticViewModel
+				{
+					Id = cosmetic.Id,
+					CosmeticName = cosmetic.CosmeticName,
+					Price = cosmetic.Price,
+					EmployeeId = cosmetic.EmployeeId
+				} :
+				null;
 		}
 		public void Insert(CosmeticBindingModel model)
 		{
@@ -79,15 +102,12 @@ namespace BeautySalonDatabaseImplement.Implements
 			cosmetic.EmployeeId = (int)model.EmployeeId;
 			return cosmetic;
 		}
-		private static CosmeticViewModel CreateModel(Cosmetic cosmetic)
+		private Cosmetic CreateModel(Cosmetic cosmetic, CosmeticBindingModel model)
 		{
-			return new CosmeticViewModel
-			{
-				Id = cosmetic.Id,
-				CosmeticName = cosmetic.CosmeticName,
-				Price = cosmetic.Price,
-				EmployeeId = cosmetic.EmployeeId
-			};
+			cosmetic.CosmeticName = model.CosmeticName;
+			cosmetic.Price = model.Price;
+			cosmetic.EmployeeId = (int)model.EmployeeId;
+			return cosmetic;
 		}
 	}
 }

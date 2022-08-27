@@ -22,10 +22,11 @@ namespace BeautySalonViewEmployee
             InitializeComponent();
         }
 
-        private void MainWindow_Loaded()
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             LoadData();
         }
+
         private void LoadData()
         {
             var employee = _logic.Read(new EmployeeBindingModel { Id = id })?[0];
