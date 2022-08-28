@@ -70,7 +70,7 @@ namespace BeautySalonViewEmployee
             {
                 try
                 {
-                    //_report.SavePurchaseListToWordFile(new ReportEmployeeBindingModel { FileName = dialog.FileName, purchaseCosmetics = new List<int>(purchaseCosmetics.Keys), EmployeeId = id });
+                    _report.SavePurchaseListToWordFile(new ReportEmployeeBindingModel { FileName = dialog.FileName, purchaseCosmetics = new List<int>(purchaseCosmetics.Keys), EmployeeId = id }, Name);
                     MessageBox.Show("Выполнено", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
@@ -88,7 +88,7 @@ namespace BeautySalonViewEmployee
             {
                 try
                 {
-                    //_report.SavePurchaseListToExcelFile(new ReportEmployeeBindingModel { FileName = dialog.FileName, purchaseCosmetics = new List<int>(purchaseCosmetics.Keys), EmployeeId = id });
+                    _report.SavePurchaseListToExcelFile(new ReportEmployeeBindingModel { FileName = dialog.FileName, purchaseCosmetics = new List<int>(purchaseCosmetics.Keys), EmployeeId = id }, dialog.FileName);
                     MessageBox.Show("Выполнено", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)

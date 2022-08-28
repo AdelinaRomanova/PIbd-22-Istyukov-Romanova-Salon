@@ -1,4 +1,6 @@
 ﻿using BeautySalonBusinessLogic.BusinessLogics;
+using BeautySalonBusinessLogic.OfficePackage;
+using BeautySalonBusinessLogic.OfficePackage.Implements;
 using BeautySalonContracts.BusinessLogicsContracts;
 using BeautySalonContracts.StoragesContracts;
 using BeautySalonDatabaseImplement.Implements;
@@ -65,9 +67,9 @@ namespace BeautySalonViewEmployee
             currentContainer.RegisterType<IReportEmployeeLogic, ReportEmployeeLogic>(new HierarchicalLifetimeManager());
             //currentContainer.RegisterType<IMessageInfoLogic, MessageInfoLogic>(new HierarchicalLifetimeManager());
 
-            //currentContainer.RegisterType<AbstractSaveToExcel, SaveToExcel>(new HierarchicalLifetimeManager());
-            //currentContainer.RegisterType<AbstractSaveToPdf, SaveToPdf>(new HierarchicalLifetimeManager());
-            //currentContainer.RegisterType<AbstractSaveToWord, SaveToWord>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<AbstractSaveToExcelEmployee, SaveToExcelEmployee>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<AbstractSaveToPdfEmployee, SaveToPdfEmployee>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<AbstractSaveToWordEmployee, SaveToWordEmployee>(new HierarchicalLifetimeManager());
             //currentContainer.RegisterType<AbstractMailWorker, MailKitWorker>(new SingletonLifetimeManager());
 
             return currentContainer;

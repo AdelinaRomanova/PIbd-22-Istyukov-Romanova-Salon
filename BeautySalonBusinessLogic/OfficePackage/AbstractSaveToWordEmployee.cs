@@ -1,7 +1,6 @@
 ﻿using BeautySalonBusinessLogic.OfficePackage.HelperEnums;
 using BeautySalonBusinessLogic.OfficePackage.HelperModels;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BeautySalonBusinessLogic.OfficePackage
 {

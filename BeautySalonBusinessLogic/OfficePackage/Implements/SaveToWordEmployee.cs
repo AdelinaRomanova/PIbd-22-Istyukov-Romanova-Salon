@@ -6,7 +6,7 @@ using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace BeautySalonBusinessLogic.OfficePackage.Implements
 {
-    internal class SaveToWordEmployee : AbstractSaveToWordEmployee
+    public class SaveToWordEmployee : AbstractSaveToWordEmployee
     {
 		private WordprocessingDocument _wordDocument;
 		private Body _docBody;

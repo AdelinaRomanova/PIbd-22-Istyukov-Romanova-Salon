@@ -100,7 +100,7 @@ namespace BeautySalonBusinessLogic.BusinessLogics
             return list;
         }
 
-        // Сохранение покупок в файл-Word
+        // Сохранение косметики в файл-Word
         public void SavePurchaseListToWordFile(ReportEmployeeBindingModel model, string name)
         {
             _saveToWord.CreateDoc(new WordInfoEmployee
@@ -111,7 +111,7 @@ namespace BeautySalonBusinessLogic.BusinessLogics
             });
         }
 
-        // Сохранение покупок в файл-Excel
+        // Сохранение чеков с указанием содержимого в файл-Excel
         public void SavePurchaseListToExcelFile(ReportEmployeeBindingModel model, string name)
         {
             _saveToExcel.CreateReport(new ExcelInfoEmployee
@@ -122,7 +122,7 @@ namespace BeautySalonBusinessLogic.BusinessLogics
             });
         }
 
-        /// Сохранение косметики в файл-Pdf
+        /// Сохранение выдач в файл-Pdf
         public void SaveCosmeticsToPdfFile(ReportEmployeeBindingModel model)
         {
             _saveToPdf.CreateDoc(new PdfInfoEmployee
