@@ -11,6 +11,8 @@ namespace BeautySalonContracts.ViewModels
         public int? EmployeeId { get; set; }
         public int? VisitId { get; set; }
 
+        public DateTime? VisitDate { get; set; }
+
         [DisplayName("Дата выдачи")]
         public DateTime IssueDate { get; set; }
         public Dictionary<int, (string, int)> DistributionCosmetics { get; set; }

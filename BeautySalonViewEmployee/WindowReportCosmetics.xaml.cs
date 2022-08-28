@@ -29,13 +29,13 @@ namespace BeautySalonViewEmployee
         public WindowReportCosmetics(IReportEmployeeLogic logic, IEmployeeStorage employeeStorage)
         {
             InitializeComponent();
-            this._logic = logic;
-            this._employeeStorage = employeeStorage;
+            _logic = logic;
+            _employeeStorage = employeeStorage;
         }
 
         private void ReportViewer_Load(object sender, EventArgs e)
         {
-            //reportViewer.LocalReport.ReportPath = "../../ReportCosmetics.rdlc";
+            reportViewer.LocalReport.ReportPath = "../../ReportCosmetics.rdlc";
         }
 
         private void buttonMake_Click(object sender, RoutedEventArgs e)
@@ -50,16 +50,16 @@ namespace BeautySalonViewEmployee
                 ReportParameter parameter = new ReportParameter("ReportParameterPeriod",
                 "c " + datePickerFrom.SelectedDate.Value.ToShortDateString() +
                 " по " + datePickerTo.SelectedDate.Value.ToShortDateString());
-                //reportViewer.LocalReport.SetParameters(parameter);
+                reportViewer.LocalReport.SetParameters(parameter);
                 var dataSource = _logic.GetCosmetics(new ReportEmployeeBindingModel
                 {
                     DateFrom = datePickerFrom.SelectedDate,
                     DateTo = datePickerTo.SelectedDate,
                     EmployeeId = id
                 });
-                //ReportDataSource source = new ReportDataSource("DataSetCosmetics", dataSource);
-                //reportViewer.LocalReport.DataSources.Add(source);
-                //reportViewer.RefreshReport();
+                ReportDataSource source = new ReportDataSource("DataSetCosmetics", dataSource);
+                reportViewer.LocalReport.DataSources.Add(source);
+                reportViewer.RefreshReport();
             }
             catch (Exception ex)
             {

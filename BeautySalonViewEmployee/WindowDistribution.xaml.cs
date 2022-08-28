@@ -44,6 +44,7 @@ namespace BeautySalonViewEmployee
                     if (view != null)
                     {
                         TextBoxIssueDate.Text = view.IssueDate.ToString();
+                        TextBoxVisitDate.Text = view.VisitDate.ToString();
                         distributionCosmetics = view.DistributionCosmetics;
                         LoadData();
                     }

@@ -11,15 +11,15 @@ namespace BeautySalonContracts.BusinessLogicsContracts
 
 
 		//=========== Получение списка покупок клиентов по выбранной косметике ================
-		List<ReportPurchaseCosmeticViewModel> GetPurchaseList(ReportPurchaseCosmeticBindingModel model);
+		List<ReportPurchaseCosmeticViewModel> GetPurchaseList(ReportEmployeeBindingModel model);
 
 
 		//=========== Сохранение списка выдач в файл-Word===========
-		public void SavePurchaseListToWordFile(ReportEmployeeBindingModel model, string name);
+		public void SavePurchaseListToWordFile(ReportEmployeeBindingModel model);
 
 
 		//=========== Сохранение списка выдач в файл-Excel===========
-		public void SavePurchaseListToExcelFile(ReportEmployeeBindingModel model, string name);
+		public void SavePurchaseListToExcelFile(ReportEmployeeBindingModel model);
 
 
 		// =========== Сохранение списка косметики в файл-Pdf===========

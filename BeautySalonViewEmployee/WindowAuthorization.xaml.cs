@@ -43,6 +43,7 @@ namespace BeautySalonViewEmployee
                     DialogResult = true;
                     var window = App.Container.Resolve<MainWindow>();
                     window.Id = list[0].Id;
+                    this.Close();
                     window.ShowDialog();
                 }
                 else

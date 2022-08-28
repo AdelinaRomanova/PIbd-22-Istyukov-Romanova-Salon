@@ -174,7 +174,8 @@ namespace BeautySalonDatabaseImplement.Implements
                 DistributionCosmetics = distribution.DistributionCosmetics
                     .ToDictionary(recDC => recDC.CosmeticId, recDC => (recDC.Cosmetic?.CosmeticName, recDC.Count)),
                 EmployeeId = distribution.EmployeeId,
-                VisitId = distribution.VisitId
+                VisitId = distribution.VisitId,
+                VisitDate = distribution.Visit?.Date
             };
         }
     }

@@ -16,17 +16,19 @@ namespace BeautySalonBusinessLogic.BusinessLogics
         private readonly IReceiptStorage _receiptStorage;
         private readonly IPurchaseStorage _purchaseStorage;
         private readonly IDistributionStorage _distributionStorage;
+        private readonly IReportStorage _reportStorage;
         private readonly AbstractSaveToExcelEmployee _saveToExcel;
         private readonly AbstractSaveToWordEmployee _saveToWord;
         private readonly AbstractSaveToPdfEmployee _saveToPdf;
 
         public ReportEmployeeLogic(
-            IReceiptStorage receiptStorage, IPurchaseStorage purchaseStorage, IDistributionStorage distributionStorage,
+            IReceiptStorage receiptStorage, IPurchaseStorage purchaseStorage, IDistributionStorage distributionStorage, IReportStorage reportStorage,
             AbstractSaveToExcelEmployee saveToExcel, AbstractSaveToWordEmployee saveToWord, AbstractSaveToPdfEmployee saveToPdf)
         {
             _receiptStorage = receiptStorage;
             _purchaseStorage = purchaseStorage;
             _distributionStorage = distributionStorage;
+            _reportStorage = reportStorage;
             _saveToExcel = saveToExcel;
             _saveToWord = saveToWord;
             _saveToPdf = saveToPdf;
@@ -61,6 +63,7 @@ namespace BeautySalonBusinessLogic.BusinessLogics
                         TypeOfService = "Выдача",
                         DateOfService = distribution.IssueDate,
                         CosmeticName = dp.Value.Item1,
+                        Count = dp.Value.Item2
                     });
                 }
             }
@@ -68,57 +71,44 @@ namespace BeautySalonBusinessLogic.BusinessLogics
         }
 
         // Получение списка выдач по выбранным процедурам
-        public List<ReportPurchaseCosmeticViewModel> GetPurchaseList(ReportPurchaseCosmeticBindingModel model)
+        public List<ReportPurchaseCosmeticViewModel> GetPurchaseList(ReportEmployeeBindingModel model)
         {
-            var listReceipts = _receiptStorage.GetFullList();
             var list = new List<ReportPurchaseCosmeticViewModel>();
+            decimal totalCost = 0;
 
-            foreach (var receipt in listReceipts)
+            foreach (var cosmetic in model.purchaseCosmetics)
             {
-                foreach (var rp in receipt.ReceiptCosmetics)
-                {
-                    if (rp.Value.Item1 == model.CosmeticName)
-                    {
-                        var listPurchase = _purchaseStorage.GetFilteredList(new PurchaseBindingModel { ReceiptId = receipt.Id });
-                        if (listPurchase.Count > 0 && listPurchase != null)
-                        {
-                            foreach (var purchase in listPurchase)
-                            {
-                                list.Add(new ReportPurchaseCosmeticViewModel
-                                {
-                                    CosmeticName = rp.Value.Item1,
-                                    Date = purchase.Date,
-                                    ClientId = (int)purchase.ClientId
-                                });
-
-                            }
-                        }
-                    }
-                }
+                list.AddRange(_reportStorage.GetPurchaseList(cosmetic));
             }
 
+            foreach (var reportPurchaseCosmetic in list)
+            {
+                totalCost += reportPurchaseCosmetic.Price * reportPurchaseCosmetic.Count;
+            }
+
+            list[0].TotalCost = totalCost;
             return list;
         }
 
-        // Сохранение косметики в файл-Word
-        public void SavePurchaseListToWordFile(ReportEmployeeBindingModel model, string name)
+        // Сохранение покупок в файл-Word
+        public void SavePurchaseListToWordFile(ReportEmployeeBindingModel model)
         {
             _saveToWord.CreateDoc(new WordInfoEmployee
             {
                 FileName = model.FileName,
-                Title = "Сведения по выдачам",
-                PurchasesCosmetic = GetPurchaseList(new ReportPurchaseCosmeticBindingModel { CosmeticName = name })
+                Title = "Сведения по покупкам",
+                PurchasesCosmetic = GetPurchaseList(model)
             });
         }
 
-        // Сохранение чеков с указанием содержимого в файл-Excel
-        public void SavePurchaseListToExcelFile(ReportEmployeeBindingModel model, string name)
+        // Сохранение покупок в файл-Excel
+        public void SavePurchaseListToExcelFile(ReportEmployeeBindingModel model)
         {
             _saveToExcel.CreateReport(new ExcelInfoEmployee
             {
                 FileName = model.FileName,
-                Title = "Сведения по выдачам",
-                PurchasesCosmetic = GetPurchaseList(new ReportPurchaseCosmeticBindingModel { CosmeticName = name })
+                Title = "Сведения по покупкам",
+                PurchasesCosmetic = GetPurchaseList(model)
             });
         }
 

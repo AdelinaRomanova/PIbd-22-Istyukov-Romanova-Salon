@@ -87,6 +87,7 @@ namespace BeautySalonBusinessLogic.BusinessLogics
                 VisitId = model.VisitId,
                 IssueDate = distribution.IssueDate,
                 DistributionCosmetics = distribution.DistributionCosmetics,
+                VisitDate = distribution.VisitDate
             });
         }
     }

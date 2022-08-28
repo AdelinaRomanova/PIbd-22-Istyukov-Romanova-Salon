@@ -16,13 +16,17 @@ namespace BeautySalonViewEmployee
         private void buttonRegister_Click(object sender, RoutedEventArgs e)
         {
             var window = App.Container.Resolve<WindowRegistration>();
+            this.Hide();
             window.ShowDialog();
+            this.Show();
         }
 
         private void buttonAuthorization_Click(object sender, RoutedEventArgs e)
         {
             var window = App.Container.Resolve<WindowAuthorization>();
+            this.Hide();
             window.ShowDialog();
+            this.Show();
         }
     }
 }

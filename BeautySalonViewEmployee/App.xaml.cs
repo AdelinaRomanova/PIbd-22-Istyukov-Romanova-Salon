@@ -56,6 +56,7 @@ namespace BeautySalonViewEmployee
             currentContainer.RegisterType<IReceiptStorage, ReceiptStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IVisitStorage, VisitStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IPurchaseStorage, PurchaseStorage>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IReportStorage, ReportStorage>(new HierarchicalLifetimeManager());
             //currentContainer.RegisterType<IMessageInfoStorage, MessageInfoStorage>(new HierarchicalLifetimeManager());
 
             currentContainer.RegisterType<ICosmeticLogic, CosmeticLogic >(new HierarchicalLifetimeManager());
